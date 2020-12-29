@@ -1,6 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Image;
 
 public class SearchCheckboxes extends JPanel {
 

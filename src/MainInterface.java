@@ -15,7 +15,11 @@ public class MainInterface {
         SearchCheckboxes scBox = new SearchCheckboxes();
         scBox.setBounds(-20, 250, 950, 30);
 
+        ManaSymbols symbols = new ManaSymbols();
+        symbols.setBounds(325, 170, 700, 100 );
+
         frame.add(scBox);
+        frame.add(symbols);
         frame.add(Search);
         frame.add(header);
         frame.setSize(1260, 800);
