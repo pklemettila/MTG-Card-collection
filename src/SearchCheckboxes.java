@@ -1,17 +1,29 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public class SearchCheckboxes extends JPanel {
 
-    JCheckBox param1 = new JCheckBox("Name");
-    JCheckBox param2 = new JCheckBox("Keyword");
-    JCheckBox param3 = new JCheckBox("Artist");
+    private JCheckBox name = new JCheckBox("Name");
+    private JCheckBox keyword = new JCheckBox("Keyword");
+    private JCheckBox artist = new JCheckBox("Artist");
+    private JCheckBox common = new JCheckBox("Common");
+    private JCheckBox uncommon = new JCheckBox("Uncommon");
+    private JCheckBox rare = new JCheckBox("Rare");
+    private JCheckBox mythic = new JCheckBox("Mythic Rare");
+
 
 
     public SearchCheckboxes(){
 
-        this.add(param1);
-        this.add(param2);
-        this.add(param3);
+        this.add(name);
+        this.add(keyword);
+        this.add(artist);
+        artist.setBorder(new EmptyBorder(0, 0, 0, 250));
+        this.add(common);
+        this.add(uncommon);
+        this.add(rare);
+        this.add(mythic);
 
     }
 
