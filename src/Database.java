@@ -6,7 +6,7 @@
 
     public class Database
     {
-      public static void main(String[] args)
+      public Database()
       {
         Connection connection = null;
         try

@@ -1,3 +1,6 @@
+//on windows: java -classpath ".;sqlite-jdbc-3.32.3.2.jar" CollectorMain
+//on linux: java -classpath ".:sqlite-jdbc-3.32.3.2.jar" CollectorMain
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,6 +8,9 @@ import java.awt.event.ActionListener;
 public class CollectorMain {
 
     public static void main(String[] args) {
+
+        Database DB = new Database();
+
         JFrame f = new JFrame();
         JButton b = new JButton("Click here");
         b.setBounds(50, 50, 200, 40);
@@ -24,6 +30,7 @@ public class CollectorMain {
         f.setSize(300,300);
         f.setLayout(null);
         f.setVisible(true);
+        
     }
 }
 
