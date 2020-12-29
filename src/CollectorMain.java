@@ -7,8 +7,9 @@ import java.awt.image.BufferedImage;
 
 public class CollectorMain {
 
-    MainInterface minterface = new MainInterface();
-
+    public static void main(String[] args) {
+        MainInterface minterface = new MainInterface();
+    }
 
 }
 
