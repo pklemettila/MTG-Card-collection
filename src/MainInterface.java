@@ -11,7 +11,10 @@ public class MainInterface {
         header.setBounds(10, 10 , 1250, 200);
         header.setVisible(true);
 
+        SearchCheckboxes scBox = new SearchCheckboxes();
+        scBox.setBounds(40, 250, 250, 30);
 
+        frame.add(scBox);
         frame.add(Search);
         frame.add(header);
         frame.setSize(1260, 800);

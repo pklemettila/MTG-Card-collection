@@ -6,6 +6,7 @@ public class SearchCheckboxes extends JPanel {
     JCheckBox param2 = new JCheckBox("Keyword");
     JCheckBox param3 = new JCheckBox("Artist");
 
+
     public SearchCheckboxes(){
 
         this.add(param1);
