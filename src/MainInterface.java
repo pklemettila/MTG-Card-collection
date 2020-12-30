@@ -9,7 +9,9 @@ public class MainInterface {
         header.setVisible(true);
         SearchCheckboxes scBox = new SearchCheckboxes();
         ManaSymbols symbols = new ManaSymbols();
+        PriceRange priceRange = new PriceRange();
 
+        frame.add(priceRange);
         frame.add(scBox);
         frame.add(symbols);
         frame.add(Search);
