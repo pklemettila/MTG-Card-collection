@@ -171,7 +171,7 @@ public class MainInterface {
         c.gridwidth = 1;
         c.gridx = 0;
         c.gridy = 4;
-        c.insets = new Insets(5,97,0,10);
+        c.insets = new Insets(5,92,0,10);
         pane.add(searchText, c);
 
         JLabel searchRarity = new JLabel("Rarity:"); 
@@ -194,7 +194,7 @@ public class MainInterface {
         c.gridheight = 2;
         c.gridx = 8;
         c.gridy = 4;
-        c.insets = new Insets(0,0,0,100);
+        c.insets = new Insets(0,30,0,100);
         pane.add(button, c);
 
         SearchCheckBoxes scBox = new SearchCheckBoxes();
@@ -202,7 +202,7 @@ public class MainInterface {
         c.ipady = 0;
         c.weighty = 0;
         c.gridx = 0;
-        c.insets = new Insets(0,65,5,10);
+        c.insets = new Insets(0,60,5,10);
                 c.anchor = GridBagConstraints.LINE_START;
         c.gridwidth = 1;
         c.gridheight = 1;
