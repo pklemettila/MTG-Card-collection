@@ -22,6 +22,7 @@ public class ManaSymbols extends JPanel {
 
     public ManaSymbols() {
 
+        this.setBounds(325, 170, 700, 100 );
         this.add(blue);
         this.add(black);
         this.add(green);

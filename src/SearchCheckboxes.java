@@ -16,6 +16,7 @@ public class SearchCheckboxes extends JPanel {
 
     public SearchCheckboxes(){
 
+        this.setBounds(-20, 250, 950, 30);
         this.add(name);
         this.add(keyword);
         this.add(artist);
