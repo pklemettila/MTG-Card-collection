@@ -239,8 +239,23 @@ public class MainInterface {
         c.insets = new Insets(5,0,5,0);
         pane.add(collected, c);
 
+        HelpButton helpButton = new HelpButton(frame);
+        c.fill = GridBagConstraints.NONE;
+        c.weightx = 0;
+        c.gridheight = 1;
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 8;
+        c.insets = new Insets(0,-130,0,0);
+        pane.add(helpButton, c);
+
+
+
+
         frame.pack();
         frame.setVisible(true);
+
+
 
     }
 
