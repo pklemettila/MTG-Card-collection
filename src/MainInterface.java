@@ -231,13 +231,42 @@ public class MainInterface {
         JCheckBox collected = new JCheckBox("Show only collected");
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 1;
-        c.gridheight = 2;
+        c.gridheight = 1;
         c.gridwidth = 9;
         c.anchor = GridBagConstraints.CENTER;
         c.gridx = 4;
         c.gridy = 5;
         c.insets = new Insets(5,0,5,0);
         pane.add(collected, c);
+
+// Scroller
+
+        JPanel scrollAreaPane = new JPanel();
+        scrollAreaPane.setLayout(new GridBagLayout());
+        JScrollPane scrollableArea = new JScrollPane(scrollAreaPane);  
+        //scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
+        scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 1;
+        c.gridheight = 1;
+        c.gridwidth = 10;
+        c.gridx = 0;
+        c.gridy = 6;
+        pane.add(scrollableArea, c);  
+
+        ImageIcon massacreWurm = new ImageIcon(this.getClass().getResource("/images/black_card.jpg"));   
+        Image img = massacreWurm.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon mW = new ImageIcon(img);
+        JLabel erkki = new JLabel();
+        erkki.setIcon(mW);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0;
+        c.gridheight = 1;
+        c.gridx = 0; 
+        c.gridy = 0; 
+        c.insets = new Insets(0,0,0,0);
+        scrollAreaPane.add(erkki, c);
+
 
         frame.pack();
         frame.setVisible(true);
