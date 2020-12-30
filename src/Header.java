@@ -8,7 +8,6 @@ public class Header extends JLabel {
     public Header()  {
         ImageIcon headImg = new ImageIcon(this.getClass().getResource("/images/logo.png"));
         this.setIcon(headImg);
-        this.setVisible(true);
     }
 
 
