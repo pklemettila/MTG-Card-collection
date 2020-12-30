@@ -1,6 +1,5 @@
 import javax.swing.*;
 
-
 public class SearchCheckBoxes extends JPanel {
 
     private JCheckBox name = new JCheckBox("Name");

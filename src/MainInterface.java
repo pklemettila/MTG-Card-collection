@@ -123,19 +123,19 @@ public class MainInterface {
 
 //ADD PRICE HERE
 
-        button = new JButton("price1");
+        PriceRange from = new PriceRange("Price from: ");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
         c.gridx = 8;
         c.gridy = 2;
-        pane.add(button, c);
+        pane.add(from, c);
 
-        button = new JButton("price2");
+        PriceRange to = new PriceRange("to: ");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
         c.gridx = 9;
         c.gridy = 2;
-        pane.add(button, c);
+        pane.add(to, c);
 
         SearchCheckBoxes scBox = new SearchCheckBoxes();
         c.fill = GridBagConstraints.HORIZONTAL;
