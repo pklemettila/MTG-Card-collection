@@ -1,7 +1,9 @@
 import javax.swing.*;
+import java.util.*;
 import java.awt.*;
 import java.awt.Image;
 import java.awt.Dimension;
+
 
 public class MainInterface {
     final static boolean shouldFill = true;
@@ -244,33 +246,53 @@ public class MainInterface {
         JPanel scrollAreaPane = new JPanel();
         scrollAreaPane.setLayout(new GridBagLayout());
         JScrollPane scrollableArea = new JScrollPane(scrollAreaPane);  
+        scrollableArea.setPreferredSize(new Dimension(200,200));
         //scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
         scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
         c.fill = GridBagConstraints.BOTH;
+        c.anchor = GridBagConstraints.CENTER;
         c.weightx = 1;
-        c.gridheight = 1;
+        c.gridheight = 4;
         c.gridwidth = 10;
         c.gridx = 0;
         c.gridy = 6;
         pane.add(scrollableArea, c);  
 
-        ImageIcon massacreWurm = new ImageIcon(this.getClass().getResource("/images/black_card.jpg"));   
-        Image img = massacreWurm.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon mW = new ImageIcon(img);
-        JLabel erkki = new JLabel();
-        erkki.setIcon(mW);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridheight = 1;
-        c.gridx = 0; 
-        c.gridy = 0; 
-        c.insets = new Insets(0,0,0,0);
-        scrollAreaPane.add(erkki, c);
+        ArrayList<String> erkit = new ArrayList<String>(Arrays.asList(
+        "/images/black_card.jpg",
+        "/images/white_card.jpg",
+        "/images/white_card.jpg",
+        "/images/white_card.jpg",
+        "/images/white_card.jpg",
+        "/images/white_card.jpg"
 
+        ));
+        int erkinNum = 0;
+        Dimension area;
+
+      for (String pathToErkki : erkit) {
+        GridBagConstraints erkinc = new GridBagConstraints();
+        ImageIcon raakaErkki = new ImageIcon(this.getClass().getResource(pathToErkki));
+        Image erkinKuva = raakaErkki.getImage().getScaledInstance(236, 329, Image.SCALE_SMOOTH);
+        ImageIcon valmisErkki = new ImageIcon(erkinKuva);
+        JLabel erkki = new JLabel();
+        erkki.setIcon(valmisErkki);
+        erkinc.fill = GridBagConstraints.HORIZONTAL;
+        erkinc.weightx = 0;
+        erkinc.gridheight = 1;
+        erkinc.gridx = erkinNum % 4;
+        erkinc.gridy = erkinNum / 4; 
+        scrollAreaPane.add(erkki, erkinc);
+
+        scrollAreaPane.revalidate();
+
+
+        erkinNum++;
+      }
 
         frame.pack();
         frame.setVisible(true);
 
     }
-
+ 
 }
