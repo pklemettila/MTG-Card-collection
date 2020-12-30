@@ -27,15 +27,30 @@ public class MainInterface {
         c.weightx = 1.0;
         c.gridwidth = 10;
         c.gridx = 0;
-        c.gridy = 1;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.CENTER;
+        c.insets = new Insets(30,30,30,0);
         pane.add(header, c);
+
+        JLabel price = new JLabel("Price:"); 
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 1;
+        c.gridwidth = 1;
+        c.gridx = 8;
+        c.gridy = 1;
+        c.ipadx = 0;
+        c.anchor = GridBagConstraints.LINE_START;
+        c.insets = new Insets(0,30,0,0);
+        pane.add(price, c);
 
         SearchBar search = new SearchBar("");
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 1;
         c.gridwidth = 1;
+        c.gridheight =2;
         c.gridx = 0;
-        c.gridy = 2;
+        c.gridy = 1;
+        c.insets = new Insets(5,70,5,10);
         pane.add(search, c);
 
         ImageIcon whiteManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/white_mana.png"));   
@@ -46,8 +61,10 @@ public class MainInterface {
         whiteManaButton.setIcon(manaIconW);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;
+        c.gridheight = 2;
         c.gridx = 1; 
-        c.gridy = 2; 
+        c.gridy = 1; 
+        c.insets = new Insets(5,80,5,10);
         pane.add(whiteManaButton, c);
 
 
@@ -59,7 +76,9 @@ public class MainInterface {
         blueManaButton.setIcon(manaIconBlu);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 2; 
-        c.gridy = 2; 
+        c.gridheight = 2;
+        c.gridy = 1; 
+        c.insets = new Insets(5,20,5,20);
         pane.add(blueManaButton, c);
 
   // black
@@ -71,7 +90,8 @@ public class MainInterface {
         blackManaButton.setIcon(manaIconBla);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 3; 
-        c.gridy = 2; 
+        c.gridheight =2;
+        c.gridy = 1; 
         pane.add(blackManaButton, c);
 
           // red
@@ -84,7 +104,8 @@ public class MainInterface {
           redManaButton.setIcon(manaIconR);
           c.fill = GridBagConstraints.HORIZONTAL;
           c.gridx = 4; 
-          c.gridy = 2; 
+          c.gridy = 1; 
+          c.gridheight =2;
           pane.add(redManaButton, c);
 
           ImageIcon greenManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/green_mana.png"));   
@@ -95,7 +116,8 @@ public class MainInterface {
           greenManaButton.setIcon(manaIconG);
           c.fill = GridBagConstraints.HORIZONTAL;
           c.gridx = 5; 
-          c.gridy = 2; 
+          c.gridy = 1; 
+          c.gridheight =2;
           pane.add(greenManaButton, c);
 
           ImageIcon colorlessManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/colorless_mana.png"));   
@@ -106,7 +128,8 @@ public class MainInterface {
           colorlessManaButton.setIcon(manaIcon);
           c.fill = GridBagConstraints.HORIZONTAL;
           c.gridx = 6; 
-          c.gridy = 2; 
+          c.gridy = 1; 
+          c.gridheight = 2;
           pane.add(colorlessManaButton, c);
 
           ImageIcon multicolorManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/multicolor_mana.png"));   
@@ -117,64 +140,93 @@ public class MainInterface {
           multicolorManaButton.setIcon(manaIconM);
           c.fill = GridBagConstraints.HORIZONTAL;
           c.gridx = 7; 
-          c.gridy = 2; 
+          c.gridy = 1; 
+          c.gridheight = 2;
+        c.insets = new Insets(5,20,0,50);
           pane.add(multicolorManaButton, c);
-    
 
 
-
-       
-
-
-//ADD PRICE HERE
-
-        PriceRange from = new PriceRange("Price from: ");
+        PriceRange from = new PriceRange("From: ");
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 1;
+        c.weightx = 0;
         c.gridx = 8;
         c.gridy = 2;
+        c.anchor = GridBagConstraints.LINE_START;
+        c.insets = new Insets(0,0,0,0);
+        c.gridheight = 1;
         pane.add(from, c);
+        
 
         PriceRange to = new PriceRange("to: ");
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 1;
+        c.weightx = 0;
         c.gridx = 9;
         c.gridy = 2;
+        c.insets = new Insets(0,0,0,100);
         pane.add(to, c);
+
+        JLabel searchText = new JLabel("Search:"); 
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0;
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 4;
+        c.insets = new Insets(5,97,0,10);
+        pane.add(searchText, c);
+
+        JLabel searchRarity = new JLabel("Rarity:"); 
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0;
+        c.gridwidth = 7;
+        c.insets = new Insets(5,150,0,10);
+        c.anchor = GridBagConstraints.LINE_START;
+        c.gridx = 1;
+        c.gridy = 4;
+        pane.add(searchRarity, c);
+
+
+
+        // Placeholder for Card Type Dropdown
+        button = new JButton("Card Type");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0;
+        c.gridwidth = 2;
+        c.gridheight = 2;
+        c.gridx = 8;
+        c.gridy = 4;
+        c.insets = new Insets(0,0,0,100);
+        pane.add(button, c);
 
         SearchCheckBoxes scBox = new SearchCheckBoxes();
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 0;
-        c.weighty = 0.5;
+        c.weighty = 0;
         c.gridx = 0;
+        c.insets = new Insets(0,65,5,10);
+                c.anchor = GridBagConstraints.LINE_START;
         c.gridwidth = 1;
-        c.gridy = 3;
+        c.gridheight = 1;
+        c.gridy = 5;
         pane.add(scBox, c);
 
         RarityCheckBoxes rarityCheckBox = new RarityCheckBoxes();
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weighty = 0;
         c.gridx = 1;
-        c.gridwidth = 8;
-        c.gridy = 3;
+        c.gridwidth = 7;
+        c.insets = new Insets(0,20,5,0);
+        c.gridy = 5;
         pane.add(rarityCheckBox, c);
 
-        // Placeholder for Card Type Dropdown
-        button = new JButton("Card Type");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.5;
-        c.gridwidth = 2;
-        c.gridx = 9;
-        c.gridy = 3;
-        pane.add(button, c);
-
         JCheckBox collected = new JCheckBox("Show only collected");
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.fill = GridBagConstraints.BOTH;
         c.weightx = 0;
-        c.gridwidth = 10;
+        c.gridheight = 2;
+        c.gridwidth = 9;
         c.anchor = GridBagConstraints.CENTER;
-        c.gridx = 5;
-        c.gridy = 4;
+        c.gridx = 4;
+        c.gridy = 6;
+        c.insets = new Insets(5,0,5,0);
         pane.add(collected, c);
 
         frame.pack();
