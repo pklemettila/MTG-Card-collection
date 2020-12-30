@@ -120,6 +120,9 @@ public class MainInterface {
         c.gridy = 2;
         pane.add(multicolorManaButton, c);
 
+
+//ADD PRICE HERE
+
         button = new JButton("price1");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
