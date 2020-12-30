@@ -19,6 +19,7 @@ public class MainInterface {
             c.fill = GridBagConstraints.HORIZONTAL;
         }
 
+        JToggleButton buttonTog;
         JButton button;
 
         Header header = new Header();
@@ -37,88 +38,92 @@ public class MainInterface {
         c.gridy = 2;
         pane.add(search, c);
 
-        //
-
-        ImageIcon whiteManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/white_mana.png"));
+        ImageIcon whiteManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/white_mana.png"));   
         Image whiteNewImg = whiteManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon manaIcon = new ImageIcon(whiteNewImg);
-        JButton whiteManaButton = new JButton();
-        whiteManaButton.setPreferredSize(new Dimension(40, 40));
-        whiteManaButton.setIcon(manaIcon);
+        ImageIcon manaIconW = new ImageIcon(whiteNewImg);
+        JToggleButton whiteManaButton = new JToggleButton(); 
+        whiteManaButton.setPreferredSize(new Dimension(40,40));
+        whiteManaButton.setIcon(manaIconW);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;
-        c.gridx = 1;
-        c.gridy = 2;
+        c.gridx = 1; 
+        c.gridy = 2; 
         pane.add(whiteManaButton, c);
 
-        ImageIcon blueManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/blue_mana.png"));
+
+        ImageIcon blueManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/blue_mana.png"));   
         Image newimg = blueManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-        manaIcon = new ImageIcon(newimg);
-        JButton blueManaButton = new JButton();
-        blueManaButton.setPreferredSize(new Dimension(40, 40));
-        blueManaButton.setIcon(manaIcon);
+        ImageIcon manaIconBlu = new ImageIcon(newimg);
+        JToggleButton blueManaButton = new JToggleButton(); 
+        blueManaButton.setPreferredSize(new Dimension(40,40));
+        blueManaButton.setIcon(manaIconBlu);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 2;
-        c.gridy = 2;
+        c.gridx = 2; 
+        c.gridy = 2; 
         pane.add(blueManaButton, c);
 
-        // black
-        ImageIcon blackManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/black_mana.png"));
+  // black
+        ImageIcon blackManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/black_mana.png"));   
         Image blackNewImg = blackManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-        manaIcon = new ImageIcon(blackNewImg);
-        JButton blackManaButton = new JButton();
-        blackManaButton.setPreferredSize(new Dimension(40, 40));
-        blackManaButton.setIcon(manaIcon);
+        ImageIcon manaIconBla = new ImageIcon(blackNewImg);
+        JToggleButton blackManaButton = new JToggleButton(); 
+        blackManaButton.setPreferredSize(new Dimension(40,40));
+        blackManaButton.setIcon(manaIconBla);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 3;
-        c.gridy = 2;
+        c.gridx = 3; 
+        c.gridy = 2; 
         pane.add(blackManaButton, c);
 
-        // red
+          // red
 
-        ImageIcon redManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/red_mana.png"));
-        Image redNewImg = redManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-        manaIcon = new ImageIcon(redNewImg);
-        JButton redManaButton = new JButton();
-        redManaButton.setPreferredSize(new Dimension(40, 40));
-        redManaButton.setIcon(manaIcon);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 4;
-        c.gridy = 2;
-        pane.add(redManaButton, c);
+          ImageIcon redManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/red_mana.png"));   
+          Image redNewImg = redManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+          ImageIcon manaIconR = new ImageIcon(redNewImg);
+          JToggleButton redManaButton = new JToggleButton(); 
+          redManaButton.setPreferredSize(new Dimension(40,40));
+          redManaButton.setIcon(manaIconR);
+          c.fill = GridBagConstraints.HORIZONTAL;
+          c.gridx = 4; 
+          c.gridy = 2; 
+          pane.add(redManaButton, c);
 
-        ImageIcon greenManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/green_mana.png"));
-        Image greenNewImg = greenManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-        manaIcon = new ImageIcon(greenNewImg);
-        JButton greenManaButton = new JButton();
-        greenManaButton.setPreferredSize(new Dimension(40, 40));
-        greenManaButton.setIcon(manaIcon);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 5;
-        c.gridy = 2;
-        pane.add(greenManaButton, c);
+          ImageIcon greenManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/green_mana.png"));   
+          Image greenNewImg = greenManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+          ImageIcon manaIconG = new ImageIcon(greenNewImg);
+          JToggleButton greenManaButton = new JToggleButton(); 
+          greenManaButton.setPreferredSize(new Dimension(40,40));
+          greenManaButton.setIcon(manaIconG);
+          c.fill = GridBagConstraints.HORIZONTAL;
+          c.gridx = 5; 
+          c.gridy = 2; 
+          pane.add(greenManaButton, c);
 
-        ImageIcon colorlessManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/colorless_mana.png"));
-        Image colorlessNewImg = colorlessManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-        manaIcon = new ImageIcon(colorlessNewImg);
-        JButton colorlessManaButton = new JButton();
-        colorlessManaButton.setPreferredSize(new Dimension(40, 40));
-        colorlessManaButton.setIcon(manaIcon);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 6;
-        c.gridy = 2;
-        pane.add(colorlessManaButton, c);
+          ImageIcon colorlessManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/colorless_mana.png"));   
+          Image colorlessNewImg = colorlessManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+          ImageIcon manaIcon = new ImageIcon(colorlessNewImg);
+          JToggleButton colorlessManaButton = new JToggleButton(); 
+          colorlessManaButton.setPreferredSize(new Dimension(40,40));
+          colorlessManaButton.setIcon(manaIcon);
+          c.fill = GridBagConstraints.HORIZONTAL;
+          c.gridx = 6; 
+          c.gridy = 2; 
+          pane.add(colorlessManaButton, c);
 
-        ImageIcon multicolorManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/multicolor_mana.png"));
-        Image multicolorNewImg = multicolorManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-        manaIcon = new ImageIcon(multicolorNewImg);
-        JButton multicolorManaButton = new JButton();
-        multicolorManaButton.setPreferredSize(new Dimension(40, 40));
-        multicolorManaButton.setIcon(manaIcon);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 7;
-        c.gridy = 2;
-        pane.add(multicolorManaButton, c);
+          ImageIcon multicolorManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/multicolor_mana.png"));   
+          Image multicolorNewImg = multicolorManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+          ImageIcon manaIconM = new ImageIcon(multicolorNewImg);
+          JToggleButton multicolorManaButton = new JToggleButton(); 
+          multicolorManaButton.setPreferredSize(new Dimension(40,40));
+          multicolorManaButton.setIcon(manaIconM);
+          c.fill = GridBagConstraints.HORIZONTAL;
+          c.gridx = 7; 
+          c.gridy = 2; 
+          pane.add(multicolorManaButton, c);
+    
+
+
+
+       
 
 
 //ADD PRICE HERE
