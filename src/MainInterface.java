@@ -196,8 +196,9 @@ public class MainInterface {
     pane.add(searchRarity, c);
 
     // Placeholder for Card Type Dropdown
-    
-    button = new JButton("Card Type");
+
+    String cardTypes[] = {"Card type", "Artifact", "Conspiracy", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery"};
+    DropdownMenu dropD = new DropdownMenu(cardTypes);
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0;
     c.gridwidth = 2;
@@ -205,7 +206,7 @@ public class MainInterface {
     c.gridx = 8;
     c.gridy = 3;
     c.insets = new Insets(0, 30, 0, 30);
-    pane.add(button, c);
+    pane.add(dropD, c);
 
     // Fifth row. Notice that CardType button starts in row 3 and spans to row 4
 
