@@ -236,7 +236,7 @@ public class MainInterface {
     JCheckBox collected = new JCheckBox("Show only collected");
     Font collectedFont=new Font(collected.getFont().getName(),collected.getFont().getStyle(),18);  
     collected.setFont(collectedFont);
-    c.fill = GridBagConstraints.HORIZONTAL;
+    c.fill = GridBagConstraints.NONE;
     c.weightx = 1;
     c.gridheight = 1;
     c.gridwidth = 9;
@@ -273,8 +273,8 @@ public class MainInterface {
     pane.add(scrollableArea, c);
 
     ArrayList<String> erkit = new ArrayList<String>(
-        Arrays.asList("/images/Cards/black_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg",
-            "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg",
+        Arrays.asList("/images/Cards/black_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/aether.png",
+            "/images/Cards/crystallineGiantCard.png", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg",
             "/images/Cards/white_card.jpg"
         ));
     int erkinNum = 0;
