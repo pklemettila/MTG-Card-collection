@@ -271,12 +271,12 @@ public class MainInterface {
         pane.add(scrollableArea, c);  
 
         ArrayList<String> erkit = new ArrayList<String>(Arrays.asList(
-        "/images/black_card.jpg",
-        "/images/white_card.jpg",
-        "/images/white_card.jpg",
-        "/images/white_card.jpg",
-        "/images/white_card.jpg",
-        "/images/white_card.jpg"
+        "/images/Cards/black_card.jpg",
+        "/images/Cards/white_card.jpg",
+        "/images/Cards/white_card.jpg",
+        "/images/Cards/white_card.jpg",
+        "/images/Cards/white_card.jpg",
+        "/images/Cards/white_card.jpg"
 
         ));
         int erkinNum = 0;
