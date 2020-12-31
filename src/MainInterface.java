@@ -266,14 +266,15 @@ public class MainInterface {
     c.weightx = 1;
     c.gridheight = 4;
     c.gridwidth = 10;
-    c.insets = new Insets(5, 30, 5, 30);
+    c.insets = new Insets(0, 30, 5, 30);
     c.gridx = 0;
     c.gridy = 6;
     pane.add(scrollableArea, c);
 
     ArrayList<String> erkit = new ArrayList<String>(
         Arrays.asList("/images/Cards/black_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg",
-            "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg"
+            "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg",
+            "/images/Cards/white_card.jpg"
         ));
     int erkinNum = 0;
 
@@ -286,11 +287,33 @@ public class MainInterface {
       erkki.setIcon(valmisErkki);
       erkinc.fill = GridBagConstraints.HORIZONTAL;
       erkinc.weightx = 0;
-      erkinc.gridheight = 1;
-      erkinc.gridx = erkinNum % 4;
-      erkinc.gridy = erkinNum / 4;
-      erkinc.insets = new Insets(10, 10, 10, 10);
+      erkinc.gridwidth = 1;
+      erkinc.gridheight = 2;
+      erkinc.gridx = ((erkinNum % 4) + (erkinNum % 4));
+      erkinc.gridy = ((erkinNum / 4) + (erkinNum / 4));
+      erkinc.insets = new Insets(20, 10, 10, 10);
       scrollAreaPane.add(erkki, erkinc);
+
+      button = new JButton("+");
+      erkinc.fill = GridBagConstraints.HORIZONTAL;
+      erkinc.weightx = 0;
+      erkinc.gridwidth = 1;
+      erkinc.gridheight = 1;
+      erkinc.gridx = (((erkinNum % 4) + (erkinNum % 4)) + 1);
+      erkinc.gridy = ((erkinNum / 4) + (erkinNum / 4));
+      erkinc.insets = new Insets(20, 0, 0, 0);
+      scrollAreaPane.add(button, erkinc);
+
+      button = new JButton("-");
+      erkinc.fill = GridBagConstraints.HORIZONTAL;
+      erkinc.weightx = 0;
+      erkinc.gridwidth = 1;
+      erkinc.gridheight = 1;
+      erkinc.gridx = (((erkinNum % 4) + (erkinNum % 4)) + 1);
+      erkinc.gridy = (((erkinNum / 4) + (erkinNum / 4)) + 1);
+      erkinc.insets = new Insets(20, 0, 0, 0);
+      scrollAreaPane.add(button, erkinc);
+
 
       scrollAreaPane.revalidate();
 
