@@ -46,7 +46,7 @@ public class MainInterface {
     c.gridy = 1;
     c.ipadx = 0;
     c.anchor = GridBagConstraints.LINE_START;
-    c.insets = new Insets(0, 30, 0, 0);
+    c.insets = new Insets(0, 5, 0, 30);
     pane.add(price, c);
 
     // Third row. Most elements start from row 1 (row 1 = second row). Has
