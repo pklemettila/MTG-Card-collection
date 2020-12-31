@@ -205,7 +205,7 @@ public class MainInterface {
     c.gridheight = 2;
     c.gridx = 8;
     c.gridy = 3;
-    c.insets = new Insets(0, 30, 0, 30);
+    c.insets = new Insets(0, 5, 0, 30);
     pane.add(dropD, c);
 
     // Fifth row. Notice that CardType button starts in row 3 and spans to row 4
