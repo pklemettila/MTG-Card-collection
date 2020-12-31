@@ -20,9 +20,16 @@ public HelpButton(JFrame f) {
             ImageIcon magGlass = (new ImageIcon(this.getClass().getResource("/images/maglass.png")));
             JLabel l2 = new JLabel("into the text input field and press the search icon.", magGlass, SwingConstants.TRAILING);
             l2.setHorizontalTextPosition(SwingConstants.LEADING);
+            JLabel l3 = new JLabel(" ");
+            JLabel l4 = new JLabel("You can modify the search by clicking one or more of the mana symbols. Default setting searches for all");
+            JLabel l5 = new JLabel("coloured and colourless cards.");
+
 
             d.add(l1);
             d.add(l2);
+            d.add(l3);
+            d.add(l4);
+            d.add(l5);
             d.setSize(700,500);
             d.setLocation(500,300);
             d.setVisible(true);
