@@ -12,7 +12,7 @@ public class HelpWindow extends JDialog{
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.PAGE_AXIS));
         ImageIcon magGlass = (new ImageIcon(this.getClass().getResource("/images/maglass.png")));
-        ImageIcon plusMinus = (new ImageIcon(this.getClass().getResource("/images/plusminus.png")));
+        ImageIcon plusMinus = (new ImageIcon(this.getClass().getResource("/images/plusminusläpinäkyvä.png")));
 
 
 
@@ -21,7 +21,7 @@ public class HelpWindow extends JDialog{
         l2.setHorizontalTextPosition(SwingConstants.LEADING);
         JLabel l3 = new JLabel("You can modify the search by clicking one or more of the mana symbols. Default setting searches for all");
         JLabel l4 = new JLabel("coloured and colourless cards.");
-        JLabel l5 = new JLabel(new ImageIcon(this.getClass().getResource("/images/mana/allthemana.png")));
+        JLabel l5 = new JLabel(new ImageIcon(this.getClass().getResource("/images/manasymbols.png")));
         JLabel l6 = new JLabel("If you want to search based on card type, click the drop-down menu and select your card type.");
         JLabel l7 = new JLabel(new ImageIcon(this.getClass().getResource("/images/cardtype.png")));
         JLabel l8 = new JLabel("You can also search by price range by entering values into the top-right fields ");
@@ -69,7 +69,8 @@ public class HelpWindow extends JDialog{
         this.add(infoPanel, BorderLayout.CENTER);
         this.add(buttonPanel, BorderLayout.PAGE_END);
         this.setSize(650,440);
-        this.setLocation(500,300);
+        pack();
+        setLocationRelativeTo(f);
         this.setVisible(true);
     }
 
