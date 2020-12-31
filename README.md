@@ -15,3 +15,5 @@ Stuff to do:
   - plus ja minus napit
   - hinta teksti 
   - kuinka monta omistaa teksti
+ 8. Price oikealle 
+ 9. läpinäkyväs suurennuslasi käyttöliittymään ja ohjetekestiin
