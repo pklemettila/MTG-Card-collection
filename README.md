@@ -2,6 +2,7 @@
 
 Stuff to do:
 
+- CardType dropdown korjaus
 - ManaNappien korjaus
 - Manakoodin siistiminen
 - Ohjelman keskiosa:
