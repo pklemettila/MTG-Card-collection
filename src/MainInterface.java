@@ -162,7 +162,7 @@ public class MainInterface {
     c.gridx = 8;
     c.gridy = 2;
     c.anchor = GridBagConstraints.LINE_START;
-    c.insets = new Insets(0, 0, 0, 0);
+    c.insets = new Insets(0, -2, 0, 0);
     c.gridheight = 1;
     pane.add(from, c);
 
@@ -280,8 +280,8 @@ public class MainInterface {
       erkinc.weightx = 0;
       erkinc.gridwidth = 1;
       erkinc.gridheight = 2;
-      erkinc.gridx = ((erkinNum % 4) + (erkinNum % 4));
-      erkinc.gridy = ((erkinNum / 4) + (erkinNum / 4));
+      erkinc.gridx = ((erkinNum % 4) * 2);
+      erkinc.gridy = ((erkinNum / 4) * 2);
       erkinc.insets = new Insets(20, 10, 10, 10);
       scrollAreaPane.add(erkki, erkinc);
 
@@ -290,8 +290,8 @@ public class MainInterface {
       erkinc.weightx = 0;
       erkinc.gridwidth = 1;
       erkinc.gridheight = 1;
-      erkinc.gridx = (((erkinNum % 4) + (erkinNum % 4)) + 1);
-      erkinc.gridy = ((erkinNum / 4) + (erkinNum / 4));
+      erkinc.gridx = (((erkinNum % 4) * 2) + 1);
+      erkinc.gridy = ((erkinNum / 4) * 2);
       erkinc.insets = new Insets(20, 0, 0, 0);
       scrollAreaPane.add(button, erkinc);
 
@@ -300,8 +300,8 @@ public class MainInterface {
       erkinc.weightx = 0;
       erkinc.gridwidth = 1;
       erkinc.gridheight = 1;
-      erkinc.gridx = (((erkinNum % 4) + (erkinNum % 4)) + 1);
-      erkinc.gridy = (((erkinNum / 4) + (erkinNum / 4)) + 1);
+      erkinc.gridx = (((erkinNum % 4) * 2) + 1);
+      erkinc.gridy = (((erkinNum / 4) * 2) + 1);
       erkinc.insets = new Insets(20, 0, 0, 0);
       scrollAreaPane.add(button, erkinc);
 
