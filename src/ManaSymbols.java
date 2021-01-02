@@ -3,13 +3,13 @@ import java.awt.*;
 
 public class ManaSymbols extends JPanel {
 
-    private JToggleButton whiteManaButton = new JToggleButton();
-    private JToggleButton blueManaButton = new JToggleButton();
-    private JToggleButton blackManaButton = new JToggleButton();
-    private JToggleButton redManaButton = new JToggleButton();
-    private JToggleButton greenManaButton = new JToggleButton();
-    private JToggleButton colorlessManaButton = new JToggleButton();
-    private JToggleButton multicolorManaButton = new JToggleButton();
+    private JToggleButton whiteManaButton;
+    private JToggleButton blueManaButton;
+    private JToggleButton blackManaButton;
+    private JToggleButton redManaButton;
+    private JToggleButton greenManaButton;
+    private JToggleButton colorlessManaButton;
+    private JToggleButton multicolorManaButton;
 
 
     public ManaSymbols() {
