@@ -62,10 +62,20 @@ public class MainInterface {
     c.insets = new Insets(5, 50, 5, 10);
     pane.add(search, c);
 
+    ManaSymbols manaSymbols = new ManaSymbols();
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.weightx = 0;
+    c.gridheight = 2;
+    c.gridx = 1;
+    c.gridy = 1;
+    c.insets = new Insets(5, 20, 5, 10);
+    pane.add(manaSymbols, c);
+
+
     // Seven manabuttons. gridheight is 2, so these are in the second and third row
     // (gridy = 1. Start from row 1 aka second row).
 
-    ImageIcon whiteManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/white_mana.png"));
+    /* ImageIcon whiteManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/white_mana.png"));
     Image whiteNewImg = whiteManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
     ImageIcon manaIconW = new ImageIcon(whiteNewImg);
     JToggleButton whiteManaButton = new JToggleButton();
@@ -151,7 +161,7 @@ public class MainInterface {
     c.gridy = 1;
     c.gridheight = 2;
     c.insets = new Insets(5, 20, 0, 50);
-    pane.add(multicolorManaButton, c);
+    pane.add(multicolorManaButton, c);  */
 
     // Two PriceRange text boxes. These do not start from row 1 but from row 2.
     // gridheight = 1 so they are only on third row.
