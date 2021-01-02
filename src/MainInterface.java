@@ -197,15 +197,14 @@ public class MainInterface {
 
     // Card Type Dropdown
 
-    String cardTypes[] = {"Card type", "Artifact", "Conspiracy", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery"};
-    DropdownMenu dropD = new DropdownMenu(cardTypes);
-    c.fill = GridBagConstraints.HORIZONTAL;
+    DropdownMenu dropD = new DropdownMenu();
+    c.fill = GridBagConstraints.BOTH;
     c.weightx = 0;
     c.gridwidth = 2;
     c.gridheight = 2;
     c.gridx = 8;
     c.gridy = 3;
-    c.insets = new Insets(0, 5, 0, 35);
+    c.insets = new Insets(10, 5, 10, 35);
     pane.add(dropD, c);
 
     // Fifth row. Notice that CardType button starts in row 3 and spans to row 4
