@@ -76,7 +76,7 @@ public class MainInterface {
     c.gridheight = 2;
     c.gridx = 1;
     c.gridy = 1;
-    c.insets = new Insets(5, 80, 5, 10);
+    c.insets = new Insets(5, 40, 5, 10);
     pane.add(whiteManaButton, c);
 
     ImageIcon blueManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/blue_mana.png"));
@@ -182,20 +182,20 @@ public class MainInterface {
     c.gridwidth = 1;
     c.gridx = 0;
     c.gridy = 3;
-    c.insets = new Insets(5, 70, 0, 10);
+    c.insets = new Insets(5, 72, 0, 10);
     pane.add(searchText, c);
 
     JLabel searchRarity = new JLabel("Rarity:");
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0;
     c.gridwidth = 7;
-    c.insets = new Insets(5, 150, 0, 10);
+    c.insets = new Insets(5, 127, 0, 10);
     c.anchor = GridBagConstraints.LINE_START;
     c.gridx = 1;
     c.gridy = 3;
     pane.add(searchRarity, c);
 
-    // Placeholder for Card Type Dropdown
+    // Card Type Dropdown
 
     String cardTypes[] = {"Card type", "Artifact", "Conspiracy", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery"};
     DropdownMenu dropD = new DropdownMenu(cardTypes);
@@ -205,7 +205,7 @@ public class MainInterface {
     c.gridheight = 2;
     c.gridx = 8;
     c.gridy = 3;
-    c.insets = new Insets(0, 30, 0, 30);
+    c.insets = new Insets(0, 5, 0, 35);
     pane.add(dropD, c);
 
     // Fifth row. Notice that CardType button starts in row 3 and spans to row 4
@@ -244,16 +244,6 @@ public class MainInterface {
     c.gridy = 5;
     c.insets = new Insets(5, 0, 0, 0);
     pane.add(collected, c);
-
-    HelpButton helpButton = new HelpButton(frame);
-    c.fill = GridBagConstraints.NONE;
-    c.weightx = 0;
-    c.gridheight = 1;
-    c.gridwidth = 9;
-    c.gridx = 0;
-    c.gridy = 15;
-    c.insets = new Insets(0, 0, 0, 0);
-    pane.add(helpButton, c);
 
     // Scroller
 
@@ -320,6 +310,17 @@ public class MainInterface {
 
       erkinNum++;
     }
+
+    HelpButton helpButton = new HelpButton(frame);
+    c.fill = GridBagConstraints.NONE;
+    c.weightx = 0;
+    c.gridheight = 1;
+    c.gridwidth = 1;
+    c.anchor = GridBagConstraints.LINE_START;
+    c.gridx = 0;
+    c.gridy = 11;
+    c.insets = new Insets(0, 0, 0, 0);
+    pane.add(helpButton, c);
 
     frame.pack();
     frame.setMinimumSize(new Dimension(950, 600));
