@@ -54,14 +54,14 @@ public class ManaSymbols extends JPanel {
 
     private JToggleButton createButton(String colorSource) {
 
-        JToggleButton ReturnButton = new JToggleButton();
+        JToggleButton returnButton = new JToggleButton();
         ImageIcon ManaIcon = new ImageIcon(this.getClass().getResource(colorSource));
         Image NewImg = ManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon manaIconW = new ImageIcon(NewImg);
-        ReturnButton.setPreferredSize(new Dimension(40, 40));
-        ReturnButton.setIcon(manaIconW);
+        ImageIcon manaIcon = new ImageIcon(NewImg);
+        returnButton.setPreferredSize(new Dimension(40, 40));
+        returnButton.setIcon(manaIcon);
 
-        return ReturnButton;
+        return returnButton;
 
     }
 
