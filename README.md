@@ -3,7 +3,7 @@
 Stuff to do:
 
 - CardType dropdown korjaus
-- CardType dropdown korjaus oikealle paikalle
+- From korjaus oikealle paikalle
 - ManaNappien korjaus
 - Help buttonin korjaus
 - Ohjelman keskiosa:
