@@ -1,13 +1,17 @@
 import javax.swing.*;
 
-public class DropdownMenu extends JComboBox {
+public class DropdownMenu extends JPanel {
 
-
+    private JComboBox dropDown;
 
     public DropdownMenu(String[] s) {
 
-        super(s);
 
+        dropDown = new JComboBox(s);
+        this.add(dropDown);
 
     }
+
+
+
 }

@@ -76,7 +76,7 @@ public class MainInterface {
     c.gridheight = 2;
     c.gridx = 1;
     c.gridy = 1;
-    c.insets = new Insets(5, 80, 5, 10);
+    c.insets = new Insets(5, 40, 5, 10);
     pane.add(whiteManaButton, c);
 
     ImageIcon blueManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/blue_mana.png"));
@@ -162,7 +162,7 @@ public class MainInterface {
     c.gridx = 8;
     c.gridy = 2;
     c.anchor = GridBagConstraints.LINE_START;
-    c.insets = new Insets(0, 0, 0, 0);
+    c.insets = new Insets(0, -2, 0, 0);
     c.gridheight = 1;
     pane.add(from, c);
 
@@ -182,20 +182,20 @@ public class MainInterface {
     c.gridwidth = 1;
     c.gridx = 0;
     c.gridy = 3;
-    c.insets = new Insets(5, 70, 0, 10);
+    c.insets = new Insets(5, 72, 0, 10);
     pane.add(searchText, c);
 
     JLabel searchRarity = new JLabel("Rarity:");
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0;
     c.gridwidth = 7;
-    c.insets = new Insets(5, 150, 0, 10);
+    c.insets = new Insets(5, 127, 0, 10);
     c.anchor = GridBagConstraints.LINE_START;
     c.gridx = 1;
     c.gridy = 3;
     pane.add(searchRarity, c);
 
-    // Placeholder for Card Type Dropdown
+    // Card Type Dropdown
 
     String cardTypes[] = {"Card type", "Artifact", "Conspiracy", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery"};
     DropdownMenu dropD = new DropdownMenu(cardTypes);
@@ -205,7 +205,11 @@ public class MainInterface {
     c.gridheight = 2;
     c.gridx = 8;
     c.gridy = 3;
+<<<<<<< HEAD
     c.insets = new Insets(0, 5, 0, 30);
+=======
+    c.insets = new Insets(0, 5, 0, 35);
+>>>>>>> 4248f78400bf6df5b233e5dfd55d6a063d59865b
     pane.add(dropD, c);
 
     // Fifth row. Notice that CardType button starts in row 3 and spans to row 4
@@ -245,16 +249,6 @@ public class MainInterface {
     c.insets = new Insets(5, 0, 0, 0);
     pane.add(collected, c);
 
-    HelpButton helpButton = new HelpButton(frame);
-    c.fill = GridBagConstraints.NONE;
-    c.weightx = 0;
-    c.gridheight = 1;
-    c.gridwidth = 9;
-    c.gridx = 0;
-    c.gridy = 15;
-    c.insets = new Insets(0, 0, 0, 0);
-    pane.add(helpButton, c);
-
     // Scroller
 
     JPanel scrollAreaPane = new JPanel();
@@ -290,8 +284,8 @@ public class MainInterface {
       erkinc.weightx = 0;
       erkinc.gridwidth = 1;
       erkinc.gridheight = 2;
-      erkinc.gridx = ((erkinNum % 4) + (erkinNum % 4));
-      erkinc.gridy = ((erkinNum / 4) + (erkinNum / 4));
+      erkinc.gridx = ((erkinNum % 4) * 2);
+      erkinc.gridy = ((erkinNum / 4) * 2);
       erkinc.insets = new Insets(20, 10, 10, 10);
       scrollAreaPane.add(erkki, erkinc);
 
@@ -300,8 +294,8 @@ public class MainInterface {
       erkinc.weightx = 0;
       erkinc.gridwidth = 1;
       erkinc.gridheight = 1;
-      erkinc.gridx = (((erkinNum % 4) + (erkinNum % 4)) + 1);
-      erkinc.gridy = ((erkinNum / 4) + (erkinNum / 4));
+      erkinc.gridx = (((erkinNum % 4) * 2) + 1);
+      erkinc.gridy = ((erkinNum / 4) * 2);
       erkinc.insets = new Insets(20, 0, 0, 0);
       scrollAreaPane.add(button, erkinc);
 
@@ -310,8 +304,8 @@ public class MainInterface {
       erkinc.weightx = 0;
       erkinc.gridwidth = 1;
       erkinc.gridheight = 1;
-      erkinc.gridx = (((erkinNum % 4) + (erkinNum % 4)) + 1);
-      erkinc.gridy = (((erkinNum / 4) + (erkinNum / 4)) + 1);
+      erkinc.gridx = (((erkinNum % 4) * 2) + 1);
+      erkinc.gridy = (((erkinNum / 4) * 2) + 1);
       erkinc.insets = new Insets(20, 0, 0, 0);
       scrollAreaPane.add(button, erkinc);
 
@@ -320,6 +314,17 @@ public class MainInterface {
 
       erkinNum++;
     }
+
+    HelpButton helpButton = new HelpButton(frame);
+    c.fill = GridBagConstraints.NONE;
+    c.weightx = 0;
+    c.gridheight = 1;
+    c.gridwidth = 1;
+    c.anchor = GridBagConstraints.LINE_START;
+    c.gridx = 0;
+    c.gridy = 11;
+    c.insets = new Insets(0, 0, 0, 0);
+    pane.add(helpButton, c);
 
     frame.pack();
     frame.setMinimumSize(new Dimension(950, 600));
