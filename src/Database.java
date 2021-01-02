@@ -1,51 +1,75 @@
-import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Database
-{
-  public Database()
-  {
-    Connection connection = null;
-    try
-    {
-      // create a database connection
-      connection = DriverManager.getConnection("jdbc:sqlite:.db");
-      Statement statement = connection.createStatement();
-      statement.setQueryTimeout(30);
+public class Database {
 
-      statement.executeUpdate("drop table if exists card");
-      statement.executeUpdate("create table card (id integer, name string, price double, keyword string, artist string, rarity string, color string, own int)");
-      statement.executeUpdate("insert into card values(1, 'smell of god', 0.7, 'haste', 'Pauli', 'mythic rare', 'blue', 3)");
-      statement.executeUpdate("insert into card values(2, 'well of god', 1.0, 'flying', 'Pauli', 'rare', 'red', 0)");
-      ResultSet rs = statement.executeQuery("select * from card");
-      while(rs.next())
-      {
-        // read the result set
-        System.out.println("name = " + rs.getString("name"));
-        System.out.println("id = " + rs.getInt("id"));
-        System.out.println("price = " + rs.getInt("price"));
-      }
-    }
-    catch(SQLException e)
-    {
 
-      System.err.println(e.getMessage());
+    private Connection connect() {
+
+        String url = "jdbc:sqlite:MtgCards.db";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+            Statement statement = conn.createStatement();
+            statement.setQueryTimeout(30);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
     }
-    finally
-    {
-      try
-      {
-        if(connection != null)
-          connection.close();
-      }
-      catch(SQLException e)
-      {
-        // connection close failed.
-        System.err.println(e.getMessage());
-      }
+
+    
+    public void selectAllCards(){
+        String sql = "SELECT id, name FROM cards";
+        
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") +  "\t" + 
+                                   rs.getString("name") + "\t");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        try
+        {
+          if(connect() != null)
+            connect().close();
+        }
+        catch(SQLException e)
+        {
+          // connection close failed.
+          System.err.println(e.getMessage());
+        }
     }
-  }
-} 
+    public void selectAllCreatureCards(){
+        String sql = "SELECT name FROM cards WHERE types = 'Creature'";
+        
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            while (rs.next()) {
+                System.out.println(rs.getString("name") + "\t");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        try
+        {
+          if(connect() != null)
+            connect().close();
+        }
+        catch(SQLException e)
+        {
+          // connection close failed.
+          System.err.println(e.getMessage());
+        }
+    }
+}
+

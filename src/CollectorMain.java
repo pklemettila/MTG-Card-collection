@@ -12,7 +12,9 @@ public class CollectorMain {
 
     public static void main(String[] args) {
         MainInterface minterface = new MainInterface();
-        Database DB = new Database();
+        Database app = new Database();
+        app.selectAllCreatureCards();
+
     }
 
 }
