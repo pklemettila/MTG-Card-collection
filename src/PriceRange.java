@@ -7,6 +7,9 @@ public class PriceRange extends JPanel {
 
 
     public PriceRange(String s) {
+
+
+
         label = new JLabel(s);
         this.add(label);
         rangeField = new JTextField(5);

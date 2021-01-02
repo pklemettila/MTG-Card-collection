@@ -40,19 +40,19 @@ public class MainInterface {
 
     JLabel price = new JLabel("Price:");
     c.fill = GridBagConstraints.HORIZONTAL;
-    c.weightx = 1;
-    c.gridwidth = 1;
-    c.gridx = 8;
+    c.weightx = 0;
+    c.gridwidth = 0;
+    c.gridx = 3;
     c.gridy = 1;
     c.ipadx = 0;
     c.anchor = GridBagConstraints.LINE_START;
-    c.insets = new Insets(0, 5, 0, 30);
+    c.insets = new Insets(0, 5, 0, 0);
     pane.add(price, c);
 
     // Third row. Most elements start from row 1 (row 1 = second row). Has
     // searchBar, 7 manabuttons and two price range columns.
 
-    SearchBar search = new SearchBar("");
+    SearchBar search = new SearchBar();
     c.fill = GridBagConstraints.BOTH;
     c.weightx = 1;
     c.gridwidth = 1;
@@ -64,28 +64,28 @@ public class MainInterface {
 
     ManaSymbols manaSymbols = new ManaSymbols();
     c.fill = GridBagConstraints.HORIZONTAL;
-    c.weightx = 0;
+    c.weightx = 1;
     c.gridheight = 2;
     c.gridx = 1;
     c.gridy = 1;
     c.insets = new Insets(5, 20, 5, 10);
     pane.add(manaSymbols, c);
-    
+
 
     PriceRange from = new PriceRange("From: ");
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0;
-    c.gridx = 8;
+    c.gridx = 3;
     c.gridy = 2;
     c.anchor = GridBagConstraints.LINE_START;
-    c.insets = new Insets(0, -2, 0, 0);
+    c.insets = new Insets(0, 0, 0, 0);
     c.gridheight = 1;
     pane.add(from, c);
 
     PriceRange to = new PriceRange("to: ");
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0;
-    c.gridx = 9;
+    c.gridx = 4;
     c.gridy = 2;
     c.insets = new Insets(0, 0, 0, 30);
     pane.add(to, c);
@@ -98,14 +98,14 @@ public class MainInterface {
     c.gridwidth = 1;
     c.gridx = 0;
     c.gridy = 3;
-    c.insets = new Insets(5, 72, 0, 10);
+    c.insets = new Insets(5, 112, 0, 0);
     pane.add(searchText, c);
 
     JLabel searchRarity = new JLabel("Rarity:");
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0;
-    c.gridwidth = 7;
-    c.insets = new Insets(5, 127, 0, 10);
+    c.gridwidth = 1;
+    c.insets = new Insets(5, 72, 0, 0);
     c.anchor = GridBagConstraints.LINE_START;
     c.gridx = 1;
     c.gridy = 3;
@@ -116,9 +116,9 @@ public class MainInterface {
     DropdownMenu dropD = new DropdownMenu();
     c.fill = GridBagConstraints.BOTH;
     c.weightx = 0;
-    c.gridwidth = 2;
+    c.gridwidth = 9;
     c.gridheight = 2;
-    c.gridx = 8;
+    c.gridx = 3;
     c.gridy = 3;
     c.insets = new Insets(10, 5, 10, 35);
     pane.add(dropD, c);
@@ -141,8 +141,8 @@ public class MainInterface {
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weighty = 0;
     c.gridx = 1;
-    c.gridwidth = 7;
-    c.insets = new Insets(-5, 20, 5, 0);
+    c.gridwidth = 1;
+    c.insets = new Insets(-5, 0, 5, 0);
     c.gridy = 4;
     pane.add(rarityCheckBox, c);
 
@@ -155,9 +155,9 @@ public class MainInterface {
     c.weightx = 1;
     c.gridheight = 1;
     c.gridwidth = 9;
-    c.gridx = 3;
+    c.gridx = 1;
     c.gridy = 5;
-    c.insets = new Insets(5, 0, 0, 0);
+    c.insets = new Insets(5, 145, 0, 0);
     pane.add(collected, c);
 
     // Scroller

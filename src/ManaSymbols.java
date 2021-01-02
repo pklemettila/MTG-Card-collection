@@ -18,35 +18,35 @@ public class ManaSymbols extends JPanel {
 
         this.whiteManaButton = createButton("/images/mana/white_mana.png");
         this.add(whiteManaButton);
-        this.add(Box.createRigidArea(new Dimension(10,0)));
+        this.add(Box.createRigidArea(new Dimension(15,0)));
 
         this.blueManaButton = createButton("/images/mana/blue_mana.png");
         this.add(blueManaButton);
-        this.add(Box.createRigidArea(new Dimension(10,0)));
+        this.add(Box.createRigidArea(new Dimension(15,0)));
 
         this.blackManaButton = createButton("/images/mana/black_mana.png");
         this.add(blackManaButton);
-        this.add(Box.createRigidArea(new Dimension(10,0)));
+        this.add(Box.createRigidArea(new Dimension(15,0)));
 
 
         this.redManaButton = createButton("/images/mana/red_mana.png");
         this.add(redManaButton);
-        this.add(Box.createRigidArea(new Dimension(10,0)));
+        this.add(Box.createRigidArea(new Dimension(15,0)));
 
 
         this.greenManaButton = createButton("/images/mana/green_mana.png");
         this.add(greenManaButton);
-        this.add(Box.createRigidArea(new Dimension(10,0)));
+        this.add(Box.createRigidArea(new Dimension(15,0)));
 
 
         this.colorlessManaButton = createButton("/images/mana/colorless_mana.png");
         this.add(colorlessManaButton);
-        this.add(Box.createRigidArea(new Dimension(10,0)));
+        this.add(Box.createRigidArea(new Dimension(15,0)));
 
 
         this.multicolorManaButton = createButton("/images/mana/multicolor_mana.png");
         this.add(multicolorManaButton);
-        this.add(Box.createRigidArea(new Dimension(10,0)));
+        this.add(Box.createRigidArea(new Dimension(15,0)));
 
 
 
