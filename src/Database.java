@@ -77,7 +77,7 @@ public class Database {
     }
 
     public void getCardColor(String colors){
-               String sql = "SELECT id, name, colors FROM cards WHERE colors = ?";
+               String sql = "SELECT id, name, own, colors FROM cards WHERE colors = ?";
         
         try (Connection conn = this.connect();
              PreparedStatement pstmt  = conn.prepareStatement(sql)){
@@ -90,6 +90,7 @@ public class Database {
             while (rs.next()) {
                 System.out.println(rs.getInt("id") +  "\t" + 
                                    rs.getString("name") + "\t" +
+                                   rs.getInt("own") + "\t" +
                                    rs.getString("colors"));
             }
         } catch (SQLException e) {
