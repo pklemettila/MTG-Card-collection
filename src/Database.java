@@ -1,4 +1,5 @@
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,15 +48,19 @@ public class Database {
           System.err.println(e.getMessage());
         }
     }
+
     public void selectAllCreatureCards(){
-        String sql = "SELECT name FROM cards WHERE types = 'Creature'";
+        String sql = "SELECT name, colors FROM cards WHERE types = 'Creature'";
         
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
             
             while (rs.next()) {
-                System.out.println(rs.getString("name") + "\t");
+                System.out.println(rs.getString("name") + "\t"
+                +
+                                   rs.getString("colors"));
+              
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -67,9 +72,29 @@ public class Database {
         }
         catch(SQLException e)
         {
-          // connection close failed.
           System.err.println(e.getMessage());
         }
     }
-}
 
+    public void getCardColor(String colors){
+               String sql = "SELECT id, name, colors FROM cards WHERE colors = ?";
+        
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            // set the value
+            pstmt.setString(1, colors);
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") +  "\t" + 
+                                   rs.getString("name") + "\t" +
+                                   rs.getString("colors"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+}
