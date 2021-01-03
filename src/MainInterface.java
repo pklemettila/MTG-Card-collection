@@ -38,7 +38,7 @@ public class MainInterface {
     // Second row. Has text "Price:". Shares half of search box and manasymbols with
     // third row.
 
-    JLabel price = new JLabel("Price:");
+    JLabel price = new JLabel("Price");
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 1;
     c.gridwidth = 1;
@@ -69,7 +69,7 @@ public class MainInterface {
     c.gridwidth = 7;
     c.gridx = 1;
     c.gridy = 1;
-    c.insets = new Insets(0, 0, 0, 0);
+    c.insets = new Insets(5, 40, 5, 40);
     pane.add(manaSymbols, c);
 
 
@@ -167,10 +167,10 @@ public class MainInterface {
     c.gridx = 8;
     c.gridy = 2;
     c.anchor = GridBagConstraints.LINE_START;
-    c.insets = new Insets(0, -2, 0, 0);
+    c.insets = new Insets(0, 0, 0, 35);
     c.gridheight = 1;
     pane.add(from, c);
-    
+
 
     // Fourth row.
 
@@ -187,7 +187,7 @@ public class MainInterface {
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0;
     c.gridwidth = 7;
-    c.insets = new Insets(5, 127, 0, 10);
+    c.insets = new Insets(5, 40, 0, 10);
     c.anchor = GridBagConstraints.LINE_START;
     c.gridx = 1;
     c.gridy = 3;
@@ -212,7 +212,7 @@ public class MainInterface {
     c.ipady = 0;
     c.weighty = 0;
     c.gridx = 0;
-    c.insets = new Insets(-5, 60, 5, 10);
+    c.insets = new Insets(-5, 20, 5, 10);
     c.anchor = GridBagConstraints.LINE_START;
     c.gridwidth = 1;
     c.gridheight = 1;
@@ -224,7 +224,7 @@ public class MainInterface {
     c.weighty = 0;
     c.gridx = 1;
     c.gridwidth = 7;
-    c.insets = new Insets(-5, 20, 5, 0);
+    c.insets = new Insets(-5, 0, 5, 20);
     c.gridy = 4;
     pane.add(rarityCheckBox, c);
 
