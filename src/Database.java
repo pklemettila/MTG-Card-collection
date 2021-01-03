@@ -97,5 +97,45 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+public void getArtist(String artist){
+        String sql = "SELECT id, name, own, artist FROM cards WHERE artist = ?";
+ 
+ try (Connection conn = this.connect();
+      PreparedStatement pstmt  = conn.prepareStatement(sql)){
+     
+     // set the value
+     pstmt.setString(1, artist);
+     ResultSet rs  = pstmt.executeQuery();
+     
+     // loop through the result set
+     while (rs.next()) {
+         System.out.println(rs.getInt("id") +  "\t" + 
+                            rs.getString("name") + "\t" +
+                            rs.getInt("own") + "\t" +
+                            rs.getString("artist"));
+     }
+ } catch (SQLException e) {
+     System.out.println(e.getMessage());
+ }
+}
 
+public void getPrice(double price){
+    String sql = "SELECT name, price FROM cards WHERE price = ?";
+
+try (Connection conn = this.connect();
+  PreparedStatement pstmt  = conn.prepareStatement(sql)){
+ 
+ // set the value
+ pstmt.setDouble(1, price);
+ ResultSet rs  = pstmt.executeQuery();
+ 
+ // loop through the result set
+ while (rs.next()) {
+     System.out.println(rs.getString("name") +  "\t" + 
+                        rs.getDouble("price"));
+ }
+} catch (SQLException e) {
+ System.out.println(e.getMessage());
+}
+}
 }
