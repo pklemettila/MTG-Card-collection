@@ -187,7 +187,7 @@ public class MainInterface {
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0;
     c.gridwidth = 7;
-    c.insets = new Insets(5, 40, 0, 10);
+    c.insets = new Insets(5, 48, 0, 10);
     c.anchor = GridBagConstraints.LINE_START;
     c.gridx = 1;
     c.gridy = 3;
@@ -212,7 +212,7 @@ public class MainInterface {
     c.ipady = 0;
     c.weighty = 0;
     c.gridx = 0;
-    c.insets = new Insets(-5, 20, 5, 10);
+    c.insets = new Insets(-5, 25, 5, 10);
     c.anchor = GridBagConstraints.LINE_START;
     c.gridwidth = 1;
     c.gridheight = 1;
