@@ -14,10 +14,13 @@ public class CollectorMain {
         MainInterface minterface = new MainInterface();
         Database app = new Database();
         //app.selectAllCreatureCards();
-       // System.out.println("by color: ");
+        //System.out.println("by color: ");
         //app.getCardColor("U");
-        //app.getArtist("Ittoku");
-        app.getPrice(0.1);
+        app.getArtist("Ittoku");
+        //app.getPrice(1);
+        //app.updatePrice(1.0, "rare");
+
+
 
     }
 
