@@ -198,11 +198,11 @@ public class MainInterface {
     DropdownMenu dropD = new DropdownMenu();
     c.fill = GridBagConstraints.BOTH;
     c.weightx = 0;
-    c.gridwidth = 2;
+    c.gridwidth = 1;
     c.gridheight = 2;
     c.gridx = 8;
     c.gridy = 3;
-    c.insets = new Insets(10, 5, 10, 35);
+    c.insets = new Insets(10, 5, 10, 125);
     pane.add(dropD, c);
 
     // Fifth row. Notice that CardType button starts in row 3 and spans to row 4
