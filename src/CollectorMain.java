@@ -17,12 +17,13 @@ public class CollectorMain {
         //System.out.println("by color: ");
         //app.getCardColor("U");
         //app.getArtist("Ittoku");
-        //app.updatePrice(0.33, "uncommon", "Mark Zug");
-        //app.getPrice(0.33);
+        //app.updatePrice(15, "rare", "Christopher Rush");
+        //app.getPrice(15);
         //app.substractFromOwned(3);
         //app.addToOwned(2543);
-        
         //app.getOwnedCards();
+        //app.searchAll(false, false, false, false, false, true, false);¨
+        app.searchOwnedById(3);
 
 
 

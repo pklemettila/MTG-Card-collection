@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+//import java.util.ArrayList;
+import java.util.*;
 
 public class Database {
 
@@ -125,21 +127,39 @@ public class Database {
         String sql = "SELECT id, name FROM cards WHERE own > 0";
 
         try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
-            
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getInt("id") +  "\t" + 
-                                   rs.getString("name"));
+                System.out.println(rs.getInt("id") + "\t" + rs.getString("name"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
+    public void searchOwnedById(int id) {
+        String sql = "SELECT id, name, own FROM cards WHERE id = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            pstmt.setInt(1,id);
+            ResultSet rs  = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") +  "\t" + 
+                                   rs.getString("name") + "\t" +
+                                   rs.getInt("own"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
     public void updatePrice(double price, String rarity, String artist) {
-        String sql = "UPDATE cards SET price = ? " + "WHERE rarity = ?" + "AND artist = ?" ;
+        String sql = "UPDATE cards SET price = ? " + "WHERE rarity = ?" + "AND artist = ?";
 
         try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -167,6 +187,7 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
     public void addToOwned(int id) {
         String sql = "UPDATE cards SET own = own + 1 " + "WHERE id = ?";
 
@@ -178,6 +199,53 @@ public class Database {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void searchAll(boolean filterW, boolean filterU, boolean filterB, boolean filterR, boolean filterG,
+            boolean filterC, boolean filterM) {
+
+        String sql = "SELECT name, colors FROM cards WHERE 1=1";
+        if (filterW) {
+            sql += " AND colors LIKE '%W%'";
+        }
+
+        if (filterU) {
+            sql += " AND colors LIKE '%U%'";
+        }
+        if (filterB) {
+            sql += " AND colors LIKE '%B%'";
+        }
+        if (filterR) {
+            sql += " AND colors LIKE '%R%'";
+        }
+        if (filterG) {
+            sql += " AND colors LIKE '%G%'";
+        }
+        if (filterC) {
+            sql += " OR colors IS NULL";
+        }
+
+        if (filterM) {
+            sql += " AND colors LIKE '%,%'";
+        }
+
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                System.out.println(rs.getString("name") + "\t" + rs.getString("colors"));
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            if (connect() != null)
+                connect().close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
         }
     }
 

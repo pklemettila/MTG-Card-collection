@@ -319,7 +319,6 @@ public class MainInterface {
     c.insets = new Insets(0, 0, 0, 0);
     pane.add(helpButton, c);
 
-
     frame.pack();
     frame.setMinimumSize(new Dimension(950, 600));
     frame.setVisible(true);
