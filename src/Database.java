@@ -202,9 +202,9 @@ public class Database {
     }
 
     public void searchAll(boolean filterW, boolean filterU, boolean filterB, boolean filterR, boolean filterG,
-            boolean filterC, boolean filterM) {
+            boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon, boolean filterRare, boolean filterMythic) {
 
-        String sql = "SELECT name, colors FROM cards WHERE 1=1";
+        String sql = "SELECT name, colors, rarity FROM cards WHERE 1=1";
         if (filterW) {
             sql += " AND colors LIKE '%W%'";
         }
@@ -228,6 +228,19 @@ public class Database {
         if (filterM) {
             sql += " AND colors LIKE '%,%'";
         }
+        if (filterCommon) {
+            sql += " AND rarity = 'common'";
+        }
+        if (filterUncommon) {
+            sql += " AND rarity = 'uncommon'";
+        }
+        if (filterRare) {
+            sql += " AND rarity = 'rare'";
+        }
+        if (filterMythic) {
+            sql += " AND rarity = 'mythic'";
+        }
+
 
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
