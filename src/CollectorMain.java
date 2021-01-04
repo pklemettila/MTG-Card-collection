@@ -20,12 +20,9 @@ public class CollectorMain {
         //app.getPrice(1);
         //app.updatePrice(1.0, "rare");
         //app.substractFromOwned(3);
-<<<<<<< HEAD
-        // app.addToOwned(3);
-=======
+
         //app.addToOwned(2543);
         //app.getOwnedCards();
->>>>>>> 5122bb6aafebbab3a6f2a38ff12bdb3b0d1258c9
 
 
 
