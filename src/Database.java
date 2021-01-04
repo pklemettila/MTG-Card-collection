@@ -139,22 +139,21 @@ public class Database {
         }
     }
 
-    public void searchOwnedById(int id) {
-        String sql = "SELECT id, name, own FROM cards WHERE id = ?";
+    public int searchOwnedById(int id) {
+  int amount = 0;
+        String sql = "SELECT own FROM cards WHERE id = ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt  = conn.prepareStatement(sql)){
             
             pstmt.setInt(1,id);
             ResultSet rs  = pstmt.executeQuery();
-            
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") +  "\t" + 
-                                   rs.getString("name") + "\t" +
-                                   rs.getInt("own"));
-            }
+            amount = rs.getInt("own");
+            return amount;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        return amount;
         }
+
     }
 
 

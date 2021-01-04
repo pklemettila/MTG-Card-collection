@@ -23,7 +23,8 @@ public class CollectorMain {
         //app.addToOwned(2543);
         //app.getOwnedCards();
         //app.searchAll(false, false, false, false, false, true, false);¨
-        app.searchOwnedById(3);
+        int num = app.searchOwnedById(3);
+        System.out.println(num);
 
 
 
