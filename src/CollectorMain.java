@@ -12,7 +12,8 @@ public class CollectorMain {
 
     public static void main(String[] args) {
         MainInterface minterface = new MainInterface();
-        Database app = new Database();
+         // Database app = new Database();
+
         //app.selectAllCreatureCards();
         //System.out.println("by color: ");
         //app.getCardColor("U");
