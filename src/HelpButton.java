@@ -13,10 +13,10 @@ public HelpButton(JFrame f) {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            HelpWindow helpWindow =new HelpWindow(f);
-             JDialog testWindow = new JDialog(f);
-             testWindow.setVisible(true);
-            testWindow.add(new MtgCard("Massacre Wurm", 10, 29686));
+            new HelpWindow(f);
+            JDialog testWindow = new JDialog(f);
+            testWindow.setVisible(true);
+            testWindow.add(new MtgCard("Massacre Kyrpä", 10));
             testWindow.setSize(500, 500);
 
 
