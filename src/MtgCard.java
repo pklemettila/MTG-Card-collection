@@ -52,7 +52,7 @@ public class MtgCard extends JPanel {
         c.weightx = 0;
         c.gridwidth = 1;
         c.gridheight = 1;
-        c.gridx =  4;
+        c.gridx =  0;
         c.gridy = 3;
         this.add(priceLabel);
 
@@ -65,9 +65,9 @@ public class MtgCard extends JPanel {
 
     private JLabel checkCardImage(String name) {
 
-        Database app = new Database();
+        /* Database app = new Database();
         app.addToOwned(13508);
-        app.getOwnedCards();
+        app.getOwnedCards(); */
 
         JLabel LabelToReturn = new JLabel();
         ImageIcon rawImage;

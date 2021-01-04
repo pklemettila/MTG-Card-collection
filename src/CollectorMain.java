@@ -12,18 +12,19 @@ public class CollectorMain {
 
     public static void main(String[] args) {
         MainInterface minterface = new MainInterface();
-        //Database app = new Database();
-        //app.selectAllCreatureCards();
-        //System.out.println("by color: ");
-        //app.getCardColor("U");
-        //app.getArtist("Ittoku");
-        //app.getPrice(1);
-        //app.updatePrice(1.0, "rare");
-        //app.substractFromOwned(3);
+         Database app = new Database();
+      /*  app.selectAllCreatureCards();
+        System.out.println("by color: ");
+        app.getCardColor("U");
+        app.getArtist("Ittoku"); */
 
-        //app.addToOwned(2543);
+         /* app.updatePrice(15, "rare", "Christopher Rush"); */
+         app.getPrice(15);
+        /* app.substractFromOwned(3);
+
+        app.addToOwned(2543);
         
-        //app.getOwnedCards();
+        app.getOwnedCards(); */
 
 
 
