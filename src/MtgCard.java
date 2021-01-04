@@ -5,11 +5,10 @@ import java.io.File;
 
 public class MtgCard extends JPanel {
 
-    private int owned = 0;
     private double price;
     private String name;
 
-    public MtgCard(String n, double p) {
+    public MtgCard(String n, double p, int id) {
 
 
         this.setLayout(new GridBagLayout());
@@ -47,21 +46,29 @@ public class MtgCard extends JPanel {
         c.insets = new Insets(0, 10, 0, 0);
         this.add(minusButton, c);
 
-        JLabel priceLabel = new JLabel(String.valueOf(price));
+        JLabel priceLabel = new JLabel("Price: " + String.valueOf(price));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;
         c.gridwidth = 1;
         c.gridheight = 1;
-        c.gridx =  4;
+        c.gridx =  1;
         c.gridy = 3;
-        this.add(priceLabel);
+        c.insets = new Insets(10, 60, 0, 0);
+        this.add(priceLabel, c);
 
+        JLabel ownedLabel = new JLabel("Owned: " + String.valueOf("5"));
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        c.gridx =  1;
+        c.gridy = 4;
+        c.insets = new Insets(10, 60, 0, 0);
+        this.add(ownedLabel, c);
 
     }
 
-    public void addOwned() {
-        this.owned++;
-    }
+
 
     private JLabel checkCardImage(String name) {
 
