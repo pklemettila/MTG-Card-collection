@@ -121,6 +121,23 @@ public class Database {
         }
     }
 
+    public void getOwnedCards() {
+        String sql = "SELECT id, name FROM cards WHERE own > 0";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") +  "\t" + 
+                                   rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void updatePrice(double price, String rarity) {
         String sql = "UPDATE cards SET price = ? " + "WHERE rarity = ?";
 
