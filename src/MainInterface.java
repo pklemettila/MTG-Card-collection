@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.*;
 import java.awt.Image;
@@ -52,7 +55,18 @@ public class MainInterface {
     // Third row. Most elements start from row 1 (row 1 = second row). Has
     // searchBar, 7 manabuttons and two price range columns.
 
-    SearchBar search = new SearchBar();
+
+
+    /* SearchBar search = new SearchBar();
+
+    search.setLayout(new BoxLayout(search, BoxLayout.LINE_AXIS));
+    JTextField searchField = new JTextField();
+    searchField.setBorder(BorderFactory.createEmptyBorder());
+    JButton searchButton = new JButton(new ImageIcon(this.getClass().getResource("images/maglass.png")));
+    Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
+    search.setBorder(lowbevelborder);
+    search.add(searchField);
+    search.add(searchButton);
     c.fill = GridBagConstraints.BOTH;
     c.weightx = 1;
     c.gridwidth = 1;
@@ -60,7 +74,7 @@ public class MainInterface {
     c.gridx = 0;
     c.gridy = 1;
     c.insets = new Insets(5, 50, 5, 10);
-    pane.add(search, c);
+    pane.add(search, c); */
 
     ManaSymbols manaSymbols = new ManaSymbols();
     c.fill = GridBagConstraints.HORIZONTAL;
@@ -73,93 +87,6 @@ public class MainInterface {
     pane.add(manaSymbols, c);
 
 
-    // Seven manabuttons. gridheight is 2, so these are in the second and third row
-    // (gridy = 1. Start from row 1 aka second row).
-
-    /* ImageIcon whiteManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/white_mana.png"));
-    Image whiteNewImg = whiteManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-    ImageIcon manaIconW = new ImageIcon(whiteNewImg);
-    JToggleButton whiteManaButton = new JToggleButton();
-    whiteManaButton.setPreferredSize(new Dimension(40, 40));
-    whiteManaButton.setIcon(manaIconW);
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.weightx = 0;
-    c.gridheight = 2;
-    c.gridx = 1;
-    c.gridy = 1;
-    c.insets = new Insets(5, 40, 5, 10);
-    pane.add(whiteManaButton, c);
-    ImageIcon blueManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/blue_mana.png"));
-    Image newimg = blueManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-    ImageIcon manaIconBlu = new ImageIcon(newimg);
-    JToggleButton blueManaButton = new JToggleButton();
-    blueManaButton.setPreferredSize(new Dimension(40, 40));
-    blueManaButton.setIcon(manaIconBlu);
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.gridx = 2;
-    c.gridheight = 2;
-    c.gridy = 1;
-    c.insets = new Insets(5, 20, 5, 20);
-    pane.add(blueManaButton, c);
-    ImageIcon blackManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/black_mana.png"));
-    Image blackNewImg = blackManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-    ImageIcon manaIconBla = new ImageIcon(blackNewImg);
-    JToggleButton blackManaButton = new JToggleButton();
-    blackManaButton.setPreferredSize(new Dimension(40, 40));
-    blackManaButton.setIcon(manaIconBla);
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.gridx = 3;
-    c.gridheight = 2;
-    c.gridy = 1;
-    pane.add(blackManaButton, c);
-    ImageIcon redManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/red_mana.png"));
-    Image redNewImg = redManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-    ImageIcon manaIconR = new ImageIcon(redNewImg);
-    JToggleButton redManaButton = new JToggleButton();
-    redManaButton.setPreferredSize(new Dimension(40, 40));
-    redManaButton.setIcon(manaIconR);
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.gridx = 4;
-    c.gridy = 1;
-    c.gridheight = 2;
-    pane.add(redManaButton, c);
-    ImageIcon greenManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/green_mana.png"));
-    Image greenNewImg = greenManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-    ImageIcon manaIconG = new ImageIcon(greenNewImg);
-    JToggleButton greenManaButton = new JToggleButton();
-    greenManaButton.setPreferredSize(new Dimension(40, 40));
-    greenManaButton.setIcon(manaIconG);
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.gridx = 5;
-    c.gridy = 1;
-    c.gridheight = 2;
-    pane.add(greenManaButton, c);
-    ImageIcon colorlessManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/colorless_mana.png"));
-    Image colorlessNewImg = colorlessManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-    ImageIcon manaIcon = new ImageIcon(colorlessNewImg);
-    JToggleButton colorlessManaButton = new JToggleButton();
-    colorlessManaButton.setPreferredSize(new Dimension(40, 40));
-    colorlessManaButton.setIcon(manaIcon);
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.gridx = 6;
-    c.gridy = 1;
-    c.gridheight = 2;
-    pane.add(colorlessManaButton, c);
-    ImageIcon multicolorManaIcon = new ImageIcon(this.getClass().getResource("/images/mana/multicolor_mana.png"));
-    Image multicolorNewImg = multicolorManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
-    ImageIcon manaIconM = new ImageIcon(multicolorNewImg);
-    JToggleButton multicolorManaButton = new JToggleButton();
-    multicolorManaButton.setPreferredSize(new Dimension(40, 40));
-    multicolorManaButton.setIcon(manaIconM);
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.gridx = 7;
-    c.gridy = 1;
-    c.gridheight = 2;
-    c.insets = new Insets(5, 20, 0, 50);
-    pane.add(multicolorManaButton, c);  */
-
-    // Two PriceRange text boxes. These do not start from row 1 but from row 2.
-    // gridheight = 1 so they are only on third row.
 
     PriceRange from = new PriceRange();
     c.fill = GridBagConstraints.HORIZONTAL;
@@ -320,6 +247,34 @@ public class MainInterface {
     pane.add(helpButton, c);
 
 
+    SearchBar search = new SearchBar();
+
+    search.setLayout(new BoxLayout(search, BoxLayout.LINE_AXIS));
+    JTextField searchField = new JTextField();
+    searchField.setBorder(BorderFactory.createEmptyBorder());
+    JButton searchButton = new JButton(new ImageIcon(this.getClass().getResource("images/maglass.png")));
+    Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
+    search.setBorder(lowbevelborder);
+
+    searchButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        if(scBox.getNameState() == true)
+          searchField.setText("Thor!!!");
+      }
+    });
+
+    search.add(searchField);
+    search.add(searchButton);
+    c.fill = GridBagConstraints.BOTH;
+    c.weightx = 1;
+    c.gridwidth = 1;
+    c.gridheight = 2;
+    c.gridx = 0;
+    c.gridy = 1;
+    c.insets = new Insets(5, 50, 5, 10);
+    pane.add(search, c);
+
     frame.pack();
     frame.setMinimumSize(new Dimension(950, 600));
     frame.setVisible(true);
@@ -327,5 +282,8 @@ public class MainInterface {
     frame.setResizable(false);
 
   }
+
+
+
 
 }

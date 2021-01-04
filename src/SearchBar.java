@@ -7,7 +7,8 @@ public class SearchBar extends JPanel {
 
 
 
-    public SearchBar() {
+     public SearchBar() {
+         /*
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         JTextField searchField = new JTextField();
         searchField.setBorder(BorderFactory.createEmptyBorder());
@@ -24,7 +25,7 @@ public class SearchBar extends JPanel {
 
 
         this.add(searchField);
-        this.add(searchButton);
+        this.add(searchButton); */
 
     }
 

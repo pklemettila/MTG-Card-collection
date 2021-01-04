@@ -10,6 +10,7 @@ public class DropdownMenu extends JPanel {
 
     public DropdownMenu() {
 
+
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         dropDown.addActionListener(new ActionListener() {
             @Override
