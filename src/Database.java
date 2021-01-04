@@ -138,14 +138,15 @@ public class Database {
         }
     }
 
-    public void updatePrice(double price, String rarity) {
-        String sql = "UPDATE cards SET price = ? " + "WHERE rarity = ?";
+    public void updatePrice(double price, String rarity, String artist) {
+        String sql = "UPDATE cards SET price = ? " + "WHERE rarity = ?" + "AND artist = ?" ;
 
         try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // set the corresponding param
             pstmt.setDouble(1, price);
             pstmt.setString(2, rarity);
+            pstmt.setString(3, artist);
             // update
             pstmt.executeUpdate();
         } catch (SQLException e) {

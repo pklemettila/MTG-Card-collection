@@ -12,13 +12,14 @@ public class CollectorMain {
 
     public static void main(String[] args) {
         MainInterface minterface = new MainInterface();
-        //Database app = new Database();
+        Database app = new Database();
         //app.selectAllCreatureCards();
         //System.out.println("by color: ");
         //app.getCardColor("U");
         //app.getArtist("Ittoku");
-        //app.getPrice(1);
-        //app.updatePrice(1.0, "rare");
+
+        app.updatePrice(0.7, "rare", "Bastien Grivet");
+        app.getPrice(0.7);
         //app.substractFromOwned(3);
         //app.addToOwned(2543);
         
