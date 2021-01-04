@@ -22,6 +22,7 @@ public class CollectorMain {
         //app.substractFromOwned(3);
 
         //app.addToOwned(2543);
+        
         //app.getOwnedCards();
 
 
