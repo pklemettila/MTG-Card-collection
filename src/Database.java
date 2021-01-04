@@ -114,7 +114,7 @@ public class Database {
 
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getString("name") + "\t" +  rs.getString("rarity") + "\t" + rs.getDouble("price"));
+                System.out.println(rs.getString("name") + "\t" + rs.getString("rarity") + "\t" + rs.getDouble("price"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -122,19 +122,45 @@ public class Database {
     }
 
     public void updatePrice(double price, String rarity) {
-        String sql = "UPDATE cards SET price = ? "
-                + "WHERE rarity = ?";
+        String sql = "UPDATE cards SET price = ? " + "WHERE rarity = ?";
 
-        try (Connection conn = this.connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // set the corresponding param
             pstmt.setDouble(1, price);
             pstmt.setString(2, rarity);
-            // update 
+            // update
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
+
+    public void substractFromOwned(int id) {
+        String sql = "UPDATE cards SET own = own - 1 " + "WHERE id = ?";
+
+        try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the corresponding param
+            pstmt.setInt(1, id);
+            // update
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void addToOwned(int id) {
+        String sql = "UPDATE cards SET own = own + 1 " + "WHERE id = ?";
+
+        try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the corresponding param
+            pstmt.setInt(1, id);
+            // update
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
