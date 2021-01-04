@@ -65,10 +65,11 @@ public class MtgCard extends JPanel {
 
     private JLabel checkCardImage(String name) {
 
+/*
         Database app = new Database();
         app.addToOwned(13508);
         app.getOwnedCards();
-
+*/
         JLabel LabelToReturn = new JLabel();
         ImageIcon rawImage;
         Image imgImage;

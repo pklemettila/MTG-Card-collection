@@ -17,9 +17,8 @@ public class CollectorMain {
         //System.out.println("by color: ");
         //app.getCardColor("U");
         //app.getArtist("Ittoku");
-
-        app.updatePrice(0.7, "rare", "Bastien Grivet");
-        app.getPrice(0.7);
+        //app.updatePrice(0.33, "uncommon", "Mark Zug");
+        //app.getPrice(0.33);
         //app.substractFromOwned(3);
         //app.addToOwned(2543);
         
