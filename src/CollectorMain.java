@@ -20,7 +20,7 @@ public class CollectorMain {
         //app.getPrice(1);
         //app.updatePrice(1.0, "rare");
         //app.substractFromOwned(3);
-        app.addToOwned(3);
+        // app.addToOwned(3);
 
 
 
