@@ -14,6 +14,11 @@ public HelpButton(JFrame f) {
         public void actionPerformed(ActionEvent e) {
 
             new HelpWindow(f);
+            JDialog testWindow = new JDialog(f);
+            testWindow.setVisible(true);
+            testWindow.add(new MtgCard("Massacre Kyrpä", 10));
+            testWindow.setSize(500, 500);
+
 
         }
 
