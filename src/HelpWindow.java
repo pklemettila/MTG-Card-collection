@@ -12,7 +12,7 @@ public class HelpWindow extends JDialog{
             JPanel infoPanel = new JPanel();
             infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.PAGE_AXIS));
             ImageIcon magGlass = (new ImageIcon(this.getClass().getResource("/images/maglass.png")));
-            ImageIcon plusMinus = (new ImageIcon(this.getClass().getResource("/images/plusminusläpinäkyvä.png")));
+            ImageIcon plusMinus = (new ImageIcon(this.getClass().getResource("/images/plusminuslapinakyvä.png")));
 
 
             JLabel l1 = new JLabel("Use the search bar to search for cards by name, keyword or artist. Type card name, artist name or keyword");
