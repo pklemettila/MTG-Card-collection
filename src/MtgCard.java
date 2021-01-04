@@ -9,8 +9,10 @@ public class MtgCard extends JPanel {
     private double price;
     private String name;
 
-    public MtgCard(String n, double p) {
+    public MtgCard(String n, double p, int id) {
 
+
+        Database app = new Database();
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -47,14 +49,25 @@ public class MtgCard extends JPanel {
         c.insets = new Insets(0, 10, 0, 0);
         this.add(minusButton, c);
 
-        JLabel priceLabel = new JLabel(String.valueOf(price));
+        JLabel priceLabel = new JLabel("Price: " + String.valueOf(price));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;
         c.gridwidth = 1;
         c.gridheight = 1;
-        c.gridx =  0;
+        c.gridx =  1;
         c.gridy = 3;
-        this.add(priceLabel);
+        c.insets = new Insets(10, 60, 0, 0);
+        this.add(priceLabel, c);
+
+        JLabel ownedLabel = new JLabel("Owned: " + String.valueOf("5"));
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        c.gridx =  1;
+        c.gridy = 4;
+        c.insets = new Insets(10, 60, 0, 0);
+        this.add(ownedLabel, c);
 
 
     }
@@ -65,18 +78,10 @@ public class MtgCard extends JPanel {
 
     private JLabel checkCardImage(String name) {
 
-<<<<<<< HEAD
         /* Database app = new Database();
         app.addToOwned(13508);
         app.getOwnedCards(); */
 
-=======
-/*
-        Database app = new Database();
-        app.addToOwned(13508);
-        app.getOwnedCards();
-*/
->>>>>>> ed24da58e3afc929e8d5afa1bae600052f58d842
         JLabel LabelToReturn = new JLabel();
         ImageIcon rawImage;
         Image imgImage;
