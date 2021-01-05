@@ -194,9 +194,9 @@ public class MainInterface {
        cardC.fill = GridBagConstraints.HORIZONTAL;
        cardC.weightx = 0;
        cardC.gridwidth = 1;
-       cardC.gridheight = 2;
-       cardC.gridx = ((i % 4) * 2);
-       cardC.gridy = ((i / 4) * 2);
+       cardC.gridheight = 1;
+       cardC.gridx = i % 4;
+       cardC.gridy = i / 4;
        cardC.insets = new Insets(20, 10, 10, 10);
        scrollAreaPane.add(showedCards.get(i), cardC);
 

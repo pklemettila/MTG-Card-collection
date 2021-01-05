@@ -48,9 +48,8 @@ public class ManaSymbols extends JPanel {
         this.multicolorManaButton = createButton("/images/mana/multicolor_mana.png");
         this.add(multicolorManaButton);
 
-
-
     }
+
 
     private JToggleButton createButton(String colorSource) {
 
