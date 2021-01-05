@@ -186,7 +186,24 @@ public class MainInterface {
     c.gridy = 6;
     pane.add(scrollableArea, c);
 
-    ArrayList<String> erkit = new ArrayList<String>(
+     ArrayList<MtgCard> showedCards = new ArrayList<MtgCard>(
+            Arrays.asList(new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686)));
+
+     for (int i=0; i<showedCards.size(); i++) {
+       GridBagConstraints cardC = new GridBagConstraints();
+       cardC.fill = GridBagConstraints.HORIZONTAL;
+       cardC.weightx = 0;
+       cardC.gridwidth = 1;
+       cardC.gridheight = 2;
+       cardC.gridx = ((i % 4) * 2);
+       cardC.gridy = ((i / 4) * 2);
+       cardC.insets = new Insets(20, 10, 10, 10);
+       scrollAreaPane.add(showedCards.get(i), cardC);
+
+     }
+
+
+     /* ArrayList<String> erkit = new ArrayList<String>(
         Arrays.asList("/images/Cards/black_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/aether.png",
             "/images/Cards/crystallineGiantCard.png", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg",
             "/images/Cards/white_card.jpg"
@@ -233,7 +250,7 @@ public class MainInterface {
       scrollAreaPane.revalidate();
 
       erkinNum++;
-    }
+    } */
 
     HelpButton helpButton = new HelpButton(frame);
     c.fill = GridBagConstraints.NONE;

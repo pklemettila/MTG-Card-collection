@@ -7,6 +7,7 @@ public class MtgCard extends JPanel {
 
     private double price;
     private String name;
+    private int idNumber;
 
     public MtgCard(String n, double p, int id) {
 
@@ -15,6 +16,7 @@ public class MtgCard extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         this.name = n;
         this.price = p;
+        this.idNumber = idNumber;
 
         JLabel cardImageLabel = checkCardImage(this.name);
         c.fill = GridBagConstraints.BOTH;
