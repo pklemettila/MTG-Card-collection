@@ -1,21 +1,23 @@
 import javax.print.attribute.standard.JobKOctets;
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
-public class MtgCard extends JPanel {
+public class MtgCard extends JPanel {     // Class representing a single MTG card
 
-    private double price;
     private String name;
     private int idNumber;
 
-    public MtgCard(String n, double p, int id) {
+    public MtgCard(String n, int id) {
 
+        Database app = new Database();
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         this.name = n;
-        this.price = p;
         this.idNumber = idNumber;
 
         JLabel cardImageLabel = checkCardImage(this.name);
@@ -28,6 +30,28 @@ public class MtgCard extends JPanel {
         c.insets = new Insets(0, 0, 0, 0);
         this.add(cardImageLabel, c);
 
+
+
+        JLabel priceLabel = new JLabel("Price: " + app.getPrice(id));
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        c.gridx =  1;
+        c.gridy = 3;
+        c.insets = new Insets(0, 60, 0, 0);
+        this.add(priceLabel, c);
+
+        JLabel ownedLabel = new JLabel("Owned: " + app.getOwnedCards(id));
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        c.gridx =  1;
+        c.gridy = 4;
+        c.insets = new Insets(0, 60, 0, 0);
+        this.add(ownedLabel, c);
+
         JButton plusButton = new JButton("+");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;
@@ -36,6 +60,14 @@ public class MtgCard extends JPanel {
         c.gridx =  3;
         c.gridy = 0;
         c.insets = new Insets(0,10, 0, 0);
+
+        plusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ownedLabel.setText("Owned: " + addToOwned(id));
+            }
+        });
+
         this.add(plusButton, c);
 
         JButton minusButton = new JButton("-");
@@ -46,38 +78,24 @@ public class MtgCard extends JPanel {
         c.gridx =  3;
         c.gridy = 1;
         c.insets = new Insets(0, 10, 0, 0);
+
+        minusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ownedLabel.setText("Owned: " + subtractFromOwned(id));
+            }
+        });
         this.add(minusButton, c);
 
-        JLabel priceLabel = new JLabel("Price: " + String.valueOf(price));
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.gridx =  1;
-        c.gridy = 3;
-        c.insets = new Insets(10, 60, 0, 0);
-        this.add(priceLabel, c);
-
-        JLabel ownedLabel = new JLabel("Owned: " + String.valueOf("5"));
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.gridx =  1;
-        c.gridy = 4;
-        c.insets = new Insets(10, 60, 0, 0);
-        this.add(ownedLabel, c);
 
     }
 
 
 
-    private JLabel checkCardImage(String name) {
+    private JLabel checkCardImage(String name) {   // Gets an image of the specific MTG card from the directory. If no image is available, uses a placeholder
 
 /*
-        Database app = new Database();
-        app.addToOwned(13508);
-        app.getOwnedCards();
+
 */
         JLabel LabelToReturn = new JLabel();
         ImageIcon rawImage;
@@ -100,6 +118,23 @@ public class MtgCard extends JPanel {
         LabelToReturn.setIcon(new ImageIcon(imgImage));
         return LabelToReturn;
 
+
+    }
+
+
+    private int addToOwned(int id) {   // adds 1 owned card with this id to the database and returns updated amount of owned cards
+
+        Database app = new Database();
+        app.addToOwned(id);
+        return (app.searchOwnedById(id));
+
+    }
+
+    private int subtractFromOwned(int id) {   // removes 1 owned card with this id from the database and returns updated amount of owned cards
+
+        Database app = new Database();
+        app.substractFromOwned(id);
+        return (app.searchOwnedById(id));
 
     }
 

@@ -52,29 +52,11 @@ public class MainInterface {
     c.insets = new Insets(0, 5, 0, 30);
     pane.add(price, c);
 
-    // Third row. Most elements start from row 1 (row 1 = second row). Has
-    // searchBar, 7 manabuttons and two price range columns.
+    // In the Third row most elements start from row 1 (row 1 = second row). Has
+    // searchbar, 7 manabuttons and two price range columns.
 
 
 
-    /* SearchBar search = new SearchBar();
-
-    search.setLayout(new BoxLayout(search, BoxLayout.LINE_AXIS));
-    JTextField searchField = new JTextField();
-    searchField.setBorder(BorderFactory.createEmptyBorder());
-    JButton searchButton = new JButton(new ImageIcon(this.getClass().getResource("images/maglass.png")));
-    Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
-    search.setBorder(lowbevelborder);
-    search.add(searchField);
-    search.add(searchButton);
-    c.fill = GridBagConstraints.BOTH;
-    c.weightx = 1;
-    c.gridwidth = 1;
-    c.gridheight = 2;
-    c.gridx = 0;
-    c.gridy = 1;
-    c.insets = new Insets(5, 50, 5, 10);
-    pane.add(search, c); */
 
     ManaSymbols manaSymbols = new ManaSymbols();
     c.fill = GridBagConstraints.HORIZONTAL;
@@ -187,7 +169,7 @@ public class MainInterface {
     pane.add(scrollableArea, c);
 
      ArrayList<MtgCard> showedCards = new ArrayList<MtgCard>(
-            Arrays.asList(new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686), new MtgCard("Massacre Wurm", 5, 29686)));
+            Arrays.asList(new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686)));
 
      for (int i=0; i<showedCards.size(); i++) {
        GridBagConstraints cardC = new GridBagConstraints();
@@ -203,54 +185,6 @@ public class MainInterface {
      }
 
 
-     /* ArrayList<String> erkit = new ArrayList<String>(
-        Arrays.asList("/images/Cards/black_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/aether.png",
-            "/images/Cards/crystallineGiantCard.png", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg", "/images/Cards/white_card.jpg",
-            "/images/Cards/white_card.jpg"
-        ));
-    int erkinNum = 0;
-
-    for (String pathToErkki : erkit) {
-      GridBagConstraints erkinc = new GridBagConstraints();
-      ImageIcon raakaErkki = new ImageIcon(this.getClass().getResource(pathToErkki));
-      Image erkinKuva = raakaErkki.getImage().getScaledInstance(172, 240, Image.SCALE_SMOOTH);
-      ImageIcon valmisErkki = new ImageIcon(erkinKuva);
-      JLabel erkki = new JLabel();
-      erkki.setIcon(valmisErkki);
-      erkinc.fill = GridBagConstraints.HORIZONTAL;
-      erkinc.weightx = 0;
-      erkinc.gridwidth = 1;
-      erkinc.gridheight = 2;
-      erkinc.gridx = ((erkinNum % 4) * 2);
-      erkinc.gridy = ((erkinNum / 4) * 2);
-      erkinc.insets = new Insets(20, 10, 10, 10);
-      scrollAreaPane.add(erkki, erkinc);
-
-      button = new JButton("+");
-      erkinc.fill = GridBagConstraints.HORIZONTAL;
-      erkinc.weightx = 0;
-      erkinc.gridwidth = 1;
-      erkinc.gridheight = 1;
-      erkinc.gridx = (((erkinNum % 4) * 2) + 1);
-      erkinc.gridy = ((erkinNum / 4) * 2);
-      erkinc.insets = new Insets(20, 0, 0, 0);
-      scrollAreaPane.add(button, erkinc);
-
-      button = new JButton("-");
-      erkinc.fill = GridBagConstraints.HORIZONTAL;
-      erkinc.weightx = 0;
-      erkinc.gridwidth = 1;
-      erkinc.gridheight = 1;
-      erkinc.gridx = (((erkinNum % 4) * 2) + 1);
-      erkinc.gridy = (((erkinNum / 4) * 2) + 1);
-      erkinc.insets = new Insets(20, 0, 0, 0);
-      scrollAreaPane.add(button, erkinc);
-
-
-      scrollAreaPane.revalidate();
-
-      erkinNum++;
-    } */
 
     HelpButton helpButton = new HelpButton(frame);
     c.fill = GridBagConstraints.NONE;
@@ -270,8 +204,10 @@ public class MainInterface {
     JTextField searchField = new JTextField();
     searchField.setBorder(BorderFactory.createEmptyBorder());
     JButton searchButton = new JButton(new ImageIcon(this.getClass().getResource("images/maglass.png")));
+    searchButton.setBackground(Color.WHITE);
     Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
     search.setBorder(lowbevelborder);
+
 
     searchButton.addActionListener(new ActionListener() {
       @Override
@@ -299,6 +235,7 @@ public class MainInterface {
     frame.setResizable(false);
 
   }
+
 
 
 
