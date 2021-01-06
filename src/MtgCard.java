@@ -42,7 +42,7 @@ public class MtgCard extends JPanel {     // Class representing a single MTG car
         c.insets = new Insets(0, 60, 0, 0);
         this.add(priceLabel, c);
 
-        JLabel ownedLabel = new JLabel("Owned: " + app.getOwnedCards(id));
+        JLabel ownedLabel = new JLabel("Owned: " + app.searchOwnedById(id));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;
         c.gridwidth = 1;

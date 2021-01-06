@@ -121,22 +121,19 @@ public class Database {
             return price;
         }
     }
+    public void getOwnedCards() {
+        String sql = "SELECT id, name FROM cards WHERE own > 0";
 
-    public int getOwnedCards(int id) {
-        int own = 0;
-        String sql = "SELECT own FROM cards WHERE id = ?";
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
 
-
-        try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            // set the value
-            pstmt.setInt(1, id);
-            ResultSet rs = pstmt.executeQuery();
-                own = rs.getInt("own");
-                return own;
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") + "\t" + rs.getString("name"));
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return own;
         }
     }
 
@@ -202,9 +199,10 @@ public class Database {
 
     public void searchAll(boolean filterW, boolean filterU, boolean filterB, boolean filterR, boolean filterG,
             boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon, boolean filterRare,
-            boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh, double priceMax ) {
+            boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh, double priceMax, boolean owned, boolean cardTypeSelected, 
+            String cardType, boolean searchField, boolean searchByName, boolean searchByArtist, boolean searchByKeyword, String search) {
 
-        String sql = "SELECT name, colors, rarity FROM cards WHERE 1=1";
+        String sql = "SELECT name, colors, id, price FROM cards WHERE 1=1";
 
         if (filterW || filterU || filterB || filterR || filterG || filterC || filterM) {
             ArrayList<String> orColorStatement = new ArrayList<String>();
@@ -253,31 +251,56 @@ public class Database {
 
     }
 
-    if (priceLow) {
+    if (priceLow || priceHigh) {
+        ArrayList<String> orPriceStatement = new ArrayList<String>();
+        if (priceLow) {
+            orPriceStatement.add("price > " + priceMin);
+        }
+        if (priceHigh) {
+            orPriceStatement.add("price < " + priceMax);
+        }    
 
-     sql += " AND price < ?";
+     sql += " AND ( " + String.join(" OR ", orPriceStatement) + ")";
     
     }
-     //double priceMin, 
-    
-    // boolean priceHigh, double priceMax
-    /*
-    
-    try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-        // set the corresponding param
-        pstmt.setInt(1, id);
-        // update
-        pstmt.executeUpdate();
+    if (owned) {
+        sql += " AND own > 0";
     }
-*/
-        try (Connection conn = this.connect();
+
+    if (cardTypeSelected) {
+        sql +=" AND types = '" + cardType + "'";
+    }
+
+    if (searchField){
+        ArrayList<String> searchByArrayList = new ArrayList<String>();
+        if ( !searchByName && !searchByArtist && !searchByKeyword){
+            searchByArrayList.add("name LIKE '%" + search + "%'" );
+            searchByArrayList.add("artist LIKE '%" + search + "%'" );
+            searchByArrayList.add("keywords LIKE '%" + search + "%'" );
+        }
+
+        if (searchByName){
+            searchByArrayList.add("name LIKE '%" + search + "%'" );
+        }
+
+        if (searchByArtist){
+            searchByArrayList.add("artist LIKE '%" + search + "%'" );
+        }
+        
+        if (searchByKeyword){
+            searchByArrayList.add("keywords LIKE '%" + search + "%'" );
+        }
+        sql += " AND ( " + String.join(" OR ", searchByArrayList) + ")";
+    }
+
+
+    try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                System.out.println(rs.getString("name") + "\t" + rs.getString("colors"));
-
+                System.out.println(rs.getInt("id") + "\t" + rs.getString("name") + "\t" + rs.getString("colors") + "\t" + rs.getDouble("price"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
