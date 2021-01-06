@@ -105,57 +105,56 @@ public class Database {
         }
     }
 
-    public void getPrice(double price) {
-        String sql = "SELECT name, rarity, price FROM cards WHERE price = ?";
+    public double getPrice(int id) {
+        double price = 0;
+        String sql = "SELECT price FROM cards WHERE id = ?";
 
         try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // set the value
-            pstmt.setDouble(1, price);
+            pstmt.setDouble(1, id);
             ResultSet rs = pstmt.executeQuery();
-
-            // loop through the result set
-            while (rs.next()) {
-                System.out.println(rs.getString("name") + "\t" + rs.getString("rarity") + "\t" + rs.getDouble("price"));
-            }
+            price = rs.getDouble("price");
+            return price;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            return price;
         }
     }
 
-    public void getOwnedCards() {
-        String sql = "SELECT id, name FROM cards WHERE own > 0";
+    public int getOwnedCards(int id) {
+        int own = 0;
+        String sql = "SELECT own FROM cards WHERE id = ?";
 
-        try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
 
-            // loop through the result set
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") + "\t" + rs.getString("name"));
-            }
+        try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the value
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+                own = rs.getInt("own");
+                return own;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            return own;
         }
     }
 
     public int searchOwnedById(int id) {
-  int amount = 0;
+        int amount = 0;
         String sql = "SELECT own FROM cards WHERE id = ?";
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)){
-            
-            pstmt.setInt(1,id);
-            ResultSet rs  = pstmt.executeQuery();
+        try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
             amount = rs.getInt("own");
             return amount;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        return amount;
+            return amount;
         }
 
     }
-
 
     public void updatePrice(double price, String rarity, String artist) {
         String sql = "UPDATE cards SET price = ? " + "WHERE rarity = ?" + "AND artist = ?";
@@ -202,46 +201,76 @@ public class Database {
     }
 
     public void searchAll(boolean filterW, boolean filterU, boolean filterB, boolean filterR, boolean filterG,
-            boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon, boolean filterRare, boolean filterMythic) {
+            boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon, boolean filterRare,
+            boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh, double priceMax ) {
 
         String sql = "SELECT name, colors, rarity FROM cards WHERE 1=1";
-        if (filterW) {
-            sql += " AND colors LIKE '%W%'";
+
+        if (filterW || filterU || filterB || filterR || filterG || filterC || filterM) {
+            ArrayList<String> orColorStatement = new ArrayList<String>();
+
+            if (filterW) {
+                orColorStatement.add("colors LIKE '%W%'");
+            }
+            if (filterU) {
+                orColorStatement.add("colors LIKE '%U%'");
+            }
+            if (filterB) {
+                orColorStatement.add("colors LIKE '%B%'");
+            }
+            if (filterR) {
+                orColorStatement.add("colors LIKE '%R%'");
+            }
+            if (filterG) {
+                orColorStatement.add("colors LIKE '%G%'");
+            }
+            if (filterC) {
+                orColorStatement.add("colors IS NULL");
+            }
+            if (filterM) {
+                orColorStatement.add("colors LIKE '%,%'");
+            }
+
+            sql += " AND ( " + String.join(" OR ", orColorStatement) + ")"; 
         }
 
-        if (filterU) {
-            sql += " AND colors LIKE '%U%'";
-        }
-        if (filterB) {
-            sql += " AND colors LIKE '%B%'";
-        }
-        if (filterR) {
-            sql += " AND colors LIKE '%R%'";
-        }
-        if (filterG) {
-            sql += " AND colors LIKE '%G%'";
-        }
-        if (filterC) {
-            sql += " OR colors IS NULL";
-        }
+        if (filterCommon || filterUncommon || filterRare || filterMythic) {
+            ArrayList<String> orRarityStatement = new ArrayList<String>();
 
-        if (filterM) {
-            sql += " AND colors LIKE '%,%'";
-        }
         if (filterCommon) {
-            sql += " AND rarity = 'common'";
+            orRarityStatement.add("rarity = 'common'");
         }
         if (filterUncommon) {
-            sql += " AND rarity = 'uncommon'";
+            orRarityStatement.add("rarity = 'uncommon'");
         }
         if (filterRare) {
-            sql += " AND rarity = 'rare'";
+            orRarityStatement.add("rarity = 'rare'");
         }
         if (filterMythic) {
-            sql += " AND rarity = 'mythic'";
+            orRarityStatement.add("rarity = 'mythic'");
         }
+        sql += " AND ( " + String.join(" OR ", orRarityStatement) + ")"; 
 
+    }
 
+    if (priceLow) {
+
+     sql += " AND price < ?";
+    
+    }
+     //double priceMin, 
+    
+    // boolean priceHigh, double priceMax
+    /*
+    
+    try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        // set the corresponding param
+        pstmt.setInt(1, id);
+        // update
+        pstmt.executeUpdate();
+    }
+*/
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {

@@ -22,7 +22,7 @@ public class CollectorMain {
         //app.substractFromOwned(3);
         //app.addToOwned(2543);
         //app.getOwnedCards();
-        app.searchAll(true, false, false, false, false, false, false, false, false, false, true);
+        //app.searchAll(false, false, false, false, false, false, true, false, false, false, false);
         int num = app.searchOwnedById(3);
         System.out.println(num);
 
