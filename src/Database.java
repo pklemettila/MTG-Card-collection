@@ -9,6 +9,8 @@ import java.util.*;
 
 public class Database {
 
+    private boolean add;
+
     private Connection connect() {
 
         String url = "jdbc:sqlite:MtgCards.db";
@@ -121,6 +123,7 @@ public class Database {
             return price;
         }
     }
+
     public void getOwnedCards() {
         String sql = "SELECT id, name FROM cards WHERE own > 0";
 
@@ -169,6 +172,7 @@ public class Database {
         }
     }
 
+    
     public void substractFromOwned(int id) {
         String sql = "UPDATE cards SET own = own - 1 " + "WHERE id = ?";
 
@@ -182,6 +186,7 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
 
     public void addToOwned(int id) {
         String sql = "UPDATE cards SET own = own + 1 " + "WHERE id = ?";
@@ -197,10 +202,13 @@ public class Database {
         }
     }
 
-    public void searchAll(boolean filterW, boolean filterU, boolean filterB, boolean filterR, boolean filterG,
-            boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon, boolean filterRare,
-            boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh, double priceMax, boolean owned, boolean cardTypeSelected, 
-            String cardType, boolean searchField, boolean searchByName, boolean searchByArtist, boolean searchByKeyword, String search) {
+    public ArrayList<Integer> searchAll(boolean filterW, boolean filterU, boolean filterB, boolean filterR,
+            boolean filterG, boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon,
+            boolean filterRare, boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh,
+            double priceMax, boolean owned, boolean cardTypeSelected, String cardType, boolean searchField,
+            boolean searchByName, boolean searchByArtist, boolean searchByKeyword, String search) {
+
+        ArrayList<Integer> filteredCardsArrayList = new ArrayList<>();
 
         String sql = "SELECT name, colors, id, price FROM cards WHERE 1=1";
 
@@ -229,79 +237,80 @@ public class Database {
                 orColorStatement.add("colors LIKE '%,%'");
             }
 
-            sql += " AND ( " + String.join(" OR ", orColorStatement) + ")"; 
+            sql += " AND ( " + String.join(" OR ", orColorStatement) + ")";
         }
 
         if (filterCommon || filterUncommon || filterRare || filterMythic) {
             ArrayList<String> orRarityStatement = new ArrayList<String>();
 
-        if (filterCommon) {
-            orRarityStatement.add("rarity = 'common'");
-        }
-        if (filterUncommon) {
-            orRarityStatement.add("rarity = 'uncommon'");
-        }
-        if (filterRare) {
-            orRarityStatement.add("rarity = 'rare'");
-        }
-        if (filterMythic) {
-            orRarityStatement.add("rarity = 'mythic'");
-        }
-        sql += " AND ( " + String.join(" OR ", orRarityStatement) + ")"; 
+            if (filterCommon) {
+                orRarityStatement.add("rarity = 'common'");
+            }
+            if (filterUncommon) {
+                orRarityStatement.add("rarity = 'uncommon'");
+            }
+            if (filterRare) {
+                orRarityStatement.add("rarity = 'rare'");
+            }
+            if (filterMythic) {
+                orRarityStatement.add("rarity = 'mythic'");
+            }
+            sql += " AND ( " + String.join(" OR ", orRarityStatement) + ")";
 
-    }
-
-    if (priceLow || priceHigh) {
-        ArrayList<String> orPriceStatement = new ArrayList<String>();
-        if (priceLow) {
-            orPriceStatement.add("price > " + priceMin);
-        }
-        if (priceHigh) {
-            orPriceStatement.add("price < " + priceMax);
-        }    
-
-     sql += " AND ( " + String.join(" OR ", orPriceStatement) + ")";
-    
-    }
-
-    if (owned) {
-        sql += " AND own > 0";
-    }
-
-    if (cardTypeSelected) {
-        sql +=" AND types = '" + cardType + "'";
-    }
-
-    if (searchField){
-        ArrayList<String> searchByArrayList = new ArrayList<String>();
-        if ( !searchByName && !searchByArtist && !searchByKeyword){
-            searchByArrayList.add("name LIKE '%" + search + "%'" );
-            searchByArrayList.add("artist LIKE '%" + search + "%'" );
-            searchByArrayList.add("keywords LIKE '%" + search + "%'" );
         }
 
-        if (searchByName){
-            searchByArrayList.add("name LIKE '%" + search + "%'" );
+        if (priceLow || priceHigh) {
+            ArrayList<String> orPriceStatement = new ArrayList<String>();
+            if (priceLow) {
+                orPriceStatement.add("price > " + priceMin);
+            }
+            if (priceHigh) {
+                orPriceStatement.add("price < " + priceMax);
+            }
+
+            sql += " AND ( " + String.join(" OR ", orPriceStatement) + ")";
+
         }
 
-        if (searchByArtist){
-            searchByArrayList.add("artist LIKE '%" + search + "%'" );
+        if (owned) {
+            sql += " AND own > 0";
         }
-        
-        if (searchByKeyword){
-            searchByArrayList.add("keywords LIKE '%" + search + "%'" );
+
+        if (cardTypeSelected) {
+            sql += " AND types = '" + cardType + "'";
         }
-        sql += " AND ( " + String.join(" OR ", searchByArrayList) + ")";
-    }
 
+        if (searchField) {
+            ArrayList<String> searchByArrayList = new ArrayList<String>();
+            if (!searchByName && !searchByArtist && !searchByKeyword) {
+                searchByArrayList.add("name LIKE '%" + search + "%'");
+                searchByArrayList.add("artist LIKE '%" + search + "%'");
+                searchByArrayList.add("keywords LIKE '%" + search + "%'");
+            }
 
-    try (Connection conn = this.connect();
+            if (searchByName) {
+                searchByArrayList.add("name LIKE '%" + search + "%'");
+            }
+
+            if (searchByArtist) {
+                searchByArrayList.add("artist LIKE '%" + search + "%'");
+            }
+
+            if (searchByKeyword) {
+                searchByArrayList.add("keywords LIKE '%" + search + "%'");
+            }
+            sql += " AND ( " + String.join(" OR ", searchByArrayList) + ")";
+        }
+
+        try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                System.out.println(rs.getInt("id") + "\t" + rs.getString("name") + "\t" + rs.getString("colors") + "\t" + rs.getDouble("price"));
+                filteredCardsArrayList.add(rs.getInt("id"));
             }
+            return filteredCardsArrayList;
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -311,6 +320,7 @@ public class Database {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+        return null;
     }
 
 }

@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 
 public class CollectorMain {
 
+
+  
+
     public static void main(String[] args) {
         MainInterface minterface = new MainInterface();
         Database app = new Database();
@@ -25,6 +28,7 @@ public class CollectorMain {
         //app.searchAll(false, false, false, false, false, false, true, false, false, false, false);
         int num = app.searchOwnedById(3);
         System.out.println(num);
+
 
 
     }
