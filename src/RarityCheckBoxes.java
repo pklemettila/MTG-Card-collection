@@ -15,4 +15,18 @@ public class RarityCheckBoxes extends JPanel {
         this.add(mythic);
 
     }
+
+    public boolean getCommonState() {
+        return (common.isSelected());
+    }
+    public boolean getUncommonState() {
+        return (uncommon.isSelected());
+    }
+    public boolean getRareState() {
+        return (rare.isSelected());
+    }
+    public boolean getMythicState() {
+        return (mythic.isSelected());
+    }
+
 }

@@ -4,6 +4,8 @@ import java.awt.*;
 public class ManaSymbols extends JPanel {
 
     private JToggleButton whiteManaButton;
+
+
     private JToggleButton blueManaButton;
     private JToggleButton blackManaButton;
     private JToggleButton redManaButton;
@@ -62,6 +64,36 @@ public class ManaSymbols extends JPanel {
 
         return returnButton;
 
+    }
+
+
+
+    public boolean getWhiteState() {
+        return whiteManaButton.isSelected();
+    }
+
+    public boolean getBlueState() {
+        return blueManaButton.isSelected();
+    }
+
+    public boolean getBlackState() {
+        return blackManaButton.isSelected();
+    }
+
+    public boolean getRedState() {
+        return redManaButton.isSelected();
+    }
+
+    public boolean getGreenState() {
+        return greenManaButton.isSelected();
+    }
+
+    public boolean getColorlessState() {
+        return colorlessManaButton.isSelected();
+    }
+
+    public boolean getMulticolorState() {
+        return multicolorManaButton.isSelected();
     }
 
 }
