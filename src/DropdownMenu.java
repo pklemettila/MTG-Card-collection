@@ -30,9 +30,9 @@ public class DropdownMenu extends JPanel {
     }
 
     public Boolean isTypeSelected() {
-        if (dropDown.getSelectedIndex() !=0)
+        if (String.valueOf(dropDown.getSelectedItem())!= "Card Type")
             return true;
-        else return false;
+        else  return false;
     }
 
     public String getSelected() {

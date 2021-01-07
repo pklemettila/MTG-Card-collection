@@ -10,7 +10,8 @@ import java.awt.Dimension;
 public class MainInterface {
   final static boolean shouldFill = true;
   final static boolean shouldWeightX = true;
-  private static  ArrayList<MtgCard> showedCards;
+  private static  ArrayList<MtgCard> showedCards = new ArrayList<MtgCard>(Arrays.asList(new MtgCard(1), new MtgCard(2), new MtgCard(3), new MtgCard(4)
+          , new MtgCard(5), new MtgCard(6), new MtgCard(7), new MtgCard(8)));; // initializing showed cards with 8 different cards
 
 
   public MainInterface() {
@@ -172,6 +173,20 @@ public class MainInterface {
     pane.add(scrollableArea, c);
 
 
+    for (int i = 0; i< showedCards.size(); i++) {
+      GridBagConstraints cardC = new GridBagConstraints();
+      cardC.fill = GridBagConstraints.HORIZONTAL;
+      cardC.weightx = 0;
+      cardC.gridwidth = 1;
+      cardC.gridheight = 1;
+      cardC.gridx = i % 4;
+      cardC.gridy = i / 4;
+      cardC.insets = new Insets(20, 10, 10, 10);
+      scrollAreaPane.add(showedCards.get(i), cardC);
+      scrollAreaPane.revalidate();
+
+    }
+
 
 
     HelpButton helpButton = new HelpButton(frame);
@@ -236,8 +251,6 @@ public class MainInterface {
     pane.add(search, c);
 
 
-
-    // showedCards = new ArrayList<MtgCard>(Arrays.asList(new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686)));
 
 
 
