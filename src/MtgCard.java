@@ -8,6 +8,10 @@ import java.io.File;
 
 public class MtgCard extends JPanel {     // Class representing a single MTG card
 
+    public int getIdNumber() {
+        return this.idNumber;
+    }
+
     private int idNumber;
 
     public MtgCard(int id) {
@@ -106,7 +110,9 @@ public class MtgCard extends JPanel {     // Class representing a single MTG car
         } else {
 
             rawImage = new ImageIcon(this.getClass().getResource("/images/cards/tempCard.jpg"));
+            Font tempCardFont=new Font(LabelToReturn.getFont().getName(),LabelToReturn.getFont().getStyle(),8);
             LabelToReturn.setText(app.searchCardsById(id));
+            LabelToReturn.setFont(tempCardFont);
             LabelToReturn.setHorizontalTextPosition(JLabel.CENTER);
 
         }

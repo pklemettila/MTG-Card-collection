@@ -61,6 +61,8 @@ public class ManaSymbols extends JPanel {
         ImageIcon manaIcon = new ImageIcon(NewImg);
         returnButton.setPreferredSize(new Dimension(40, 40));
         returnButton.setIcon(manaIcon);
+        returnButton.setBorder(BorderFactory.createEmptyBorder());
+        returnButton.setContentAreaFilled(false);
 
         return returnButton;
 

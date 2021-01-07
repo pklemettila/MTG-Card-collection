@@ -10,7 +10,8 @@ import java.awt.Dimension;
 public class MainInterface {
   final static boolean shouldFill = true;
   final static boolean shouldWeightX = true;
-  private static ArrayList<MtgCard> showedCards;
+  private static  ArrayList<MtgCard> showedCards;
+
 
   public MainInterface() {
     JFrame frame = new JFrame();
@@ -154,6 +155,7 @@ public class MainInterface {
 
     // Scroller
 
+
     JPanel scrollAreaPane = new JPanel();
     scrollAreaPane.setLayout(new GridBagLayout());
     JScrollPane scrollableArea = new JScrollPane(scrollAreaPane);
@@ -169,20 +171,6 @@ public class MainInterface {
     c.gridy = 6;
     pane.add(scrollableArea, c);
 
-    /*  showedCards = new ArrayList<MtgCard>(Arrays.asList(new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686)));
-
-     for (int i = 0; i< showedCards.size(); i++) {
-       GridBagConstraints cardC = new GridBagConstraints();
-       cardC.fill = GridBagConstraints.HORIZONTAL;
-       cardC.weightx = 0;
-       cardC.gridwidth = 1;
-       cardC.gridheight = 1;
-       cardC.gridx = i % 4;
-       cardC.gridy = i / 4;
-       cardC.insets = new Insets(20, 10, 10, 10);
-       scrollAreaPane.add(showedCards.get(i), cardC);
-
-     } */
 
 
 
@@ -209,11 +197,12 @@ public class MainInterface {
     searchButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-                showedCards = searchFunction(manaSymbols.getWhiteState(), manaSymbols.getBlueState(), manaSymbols.getBlackState(), manaSymbols.getRedState(), manaSymbols.getGreenState(), manaSymbols.getColorlessState(),
+
+        scrollAreaPane.removeAll();
+        showedCards = searchFunction(manaSymbols.getWhiteState(), manaSymbols.getBlueState(), manaSymbols.getBlackState(), manaSymbols.getRedState(), manaSymbols.getGreenState(), manaSymbols.getColorlessState(),
                 manaSymbols.getMulticolorState(), rarityCheckBox.getCommonState(), rarityCheckBox.getUncommonState(), rarityCheckBox.getRareState(), rarityCheckBox.getMythicState(),
                 fromTo.fromHasText(), fromTo.getFromNumber(), fromTo.toHasText(), fromTo.getToNumber(), collected.isSelected(), dropD.isTypeSelected(), dropD.getSelected(),
                 !searchField.toString().isEmpty(), scBox.getNameState(), scBox.getArtistStatus(), scBox.getKeyWordState(), searchField.getText());
-
         for (int i = 0; i< showedCards.size(); i++) {
           GridBagConstraints cardC = new GridBagConstraints();
           cardC.fill = GridBagConstraints.HORIZONTAL;
@@ -224,8 +213,11 @@ public class MainInterface {
           cardC.gridy = i / 4;
           cardC.insets = new Insets(20, 10, 10, 10);
           scrollAreaPane.add(showedCards.get(i), cardC);
+          scrollAreaPane.revalidate();
 
         }
+
+
 
       }
     });
@@ -245,6 +237,10 @@ public class MainInterface {
 
 
 
+    // showedCards = new ArrayList<MtgCard>(Arrays.asList(new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686)));
+
+
+
     frame.pack();
     frame.setMinimumSize(new Dimension(950, 600));
     frame.setVisible(true);
@@ -253,7 +249,7 @@ public class MainInterface {
 
   }
 
-  private ArrayList<MtgCard> searchFunction(boolean filterW, boolean filterU, boolean filterB, boolean filterR,
+    private ArrayList<MtgCard> searchFunction(boolean filterW, boolean filterU, boolean filterB, boolean filterR,
                                             boolean filterG, boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon,
                                             boolean filterRare, boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh,
                                             double priceMax, boolean owned, boolean cardTypeSelected, String cardType, boolean searchField,
@@ -271,6 +267,21 @@ public class MainInterface {
     return cardList;
 
   }
+
+   /*private ArrayList<MtgCard> searchFunction() {
+
+    Database app = new Database();
+    ArrayList<Integer> listedIDs  = app.searchAll(false, false, false, false, false, false, false, false, false, false, false, false, 1, false,
+            5, false, false, "Creature" , false, false, false, false, "");
+    ArrayList<MtgCard> cardList = new ArrayList<>();
+
+    for(int i=0; i < listedIDs.size(); i++) {
+      cardList.add(new MtgCard(listedIDs.get(i)));
+    }
+
+    return cardList;
+
+  }  */
 
 
 }

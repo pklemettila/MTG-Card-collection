@@ -42,6 +42,7 @@ public class PriceRange extends JPanel {
         }
     }
 
+
     public double getToNumber() {
         try {
             return Double.parseDouble(toField.getText());

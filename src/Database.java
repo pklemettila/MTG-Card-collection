@@ -235,6 +235,7 @@ public class Database {
             }
             sql += " AND ( " + String.join(" OR ", searchByArrayList) + ")";
         }
+sql += " LIMIT 25";
 
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
