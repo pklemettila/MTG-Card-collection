@@ -264,7 +264,7 @@ public class MainInterface {
                                     priceMax, owned, cardTypeSelected, cardType, searchField, searchByName, searchByArtist, searchByKeyword, search);
     ArrayList<MtgCard> cardList = new ArrayList<>();
 
-    for(int i=0; i < 20; i++) {
+    for(int i=0; i < listedIDs.size(); i++) {
       cardList.add(new MtgCard(listedIDs.get(i)));
     }
 
