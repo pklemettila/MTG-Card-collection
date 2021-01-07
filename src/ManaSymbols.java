@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ManaSymbols extends JPanel {
 
@@ -19,44 +21,47 @@ public class ManaSymbols extends JPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
 
-        this.whiteManaButton = createButton("/images/mana/white_mana.png");
+        this.whiteManaButton = createButton("/images/mana/white_mana");
         this.add(whiteManaButton);
         this.add(Box.createRigidArea(new Dimension(20,0)));
 
-        this.blueManaButton = createButton("/images/mana/blue_mana.png");
+
+        this.blueManaButton = createButton("/images/mana/blue_mana");
         this.add(blueManaButton);
         this.add(Box.createRigidArea(new Dimension(20,0)));
 
-        this.blackManaButton = createButton("/images/mana/black_mana.png");
+        this.blackManaButton = createButton("/images/mana/black_mana");
         this.add(blackManaButton);
         this.add(Box.createRigidArea(new Dimension(20,0)));
 
 
-        this.redManaButton = createButton("/images/mana/red_mana.png");
+        this.redManaButton = createButton("/images/mana/red_mana");
         this.add(redManaButton);
         this.add(Box.createRigidArea(new Dimension(20,0)));
 
 
-        this.greenManaButton = createButton("/images/mana/green_mana.png");
+        this.greenManaButton = createButton("/images/mana/green_mana");
         this.add(greenManaButton);
         this.add(Box.createRigidArea(new Dimension(20,0)));
 
 
-        this.colorlessManaButton = createButton("/images/mana/colorless_mana.png");
+        this.colorlessManaButton = createButton("/images/mana/colorless_mana");
         this.add(colorlessManaButton);
         this.add(Box.createRigidArea(new Dimension(20,0)));
 
 
-        this.multicolorManaButton = createButton("/images/mana/multicolor_mana.png");
+        this.multicolorManaButton = createButton("/images/mana/multicolor_mana");
         this.add(multicolorManaButton);
+
+
 
     }
 
 
-    private JToggleButton createButton(String colorSource) {
+    private JToggleButton createButton(String colorSource) {  // Creating a new mana symbol toggle button with an action listener that changes the icon upon mouse click
 
         JToggleButton returnButton = new JToggleButton();
-        ImageIcon ManaIcon = new ImageIcon(this.getClass().getResource(colorSource));
+        ImageIcon ManaIcon = new ImageIcon(this.getClass().getResource(colorSource + ".png"));
         Image NewImg = ManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
         ImageIcon manaIcon = new ImageIcon(NewImg);
         returnButton.setPreferredSize(new Dimension(40, 40));
@@ -64,9 +69,27 @@ public class ManaSymbols extends JPanel {
         returnButton.setBorder(BorderFactory.createEmptyBorder());
         returnButton.setContentAreaFilled(false);
 
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (returnButton.isSelected()) {
+                    ImageIcon toggleManaIcon = new ImageIcon(this.getClass().getResource(colorSource + "_p.png"));
+                    Image NewImg = toggleManaIcon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+                    ImageIcon togglemanaIcon = new ImageIcon(NewImg);
+                    returnButton.setIcon(togglemanaIcon);
+
+                }
+                if (!returnButton.isSelected()) {
+                    returnButton.setIcon(manaIcon);
+                }
+            }
+        });
+
         return returnButton;
 
     }
+
+
 
 
 

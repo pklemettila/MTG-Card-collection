@@ -262,6 +262,7 @@ public class MainInterface {
 
   }
 
+  // this searchfunction returns an ArrayList of MtgCards, created based on primary keys acquired from the database.
     private ArrayList<MtgCard> searchFunction(boolean filterW, boolean filterU, boolean filterB, boolean filterR,
                                             boolean filterG, boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon,
                                             boolean filterRare, boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh,
@@ -281,20 +282,7 @@ public class MainInterface {
 
   }
 
-   /*private ArrayList<MtgCard> searchFunction() {
 
-    Database app = new Database();
-    ArrayList<Integer> listedIDs  = app.searchAll(false, false, false, false, false, false, false, false, false, false, false, false, 1, false,
-            5, false, false, "Creature" , false, false, false, false, "");
-    ArrayList<MtgCard> cardList = new ArrayList<>();
-
-    for(int i=0; i < listedIDs.size(); i++) {
-      cardList.add(new MtgCard(listedIDs.get(i)));
-    }
-
-    return cardList;
-
-  }  */
 
 
 }
