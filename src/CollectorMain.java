@@ -32,8 +32,13 @@ public class CollectorMain {
         int num = app.searchOwnedById(3);
         System.out.println(num);
         System.out.println(matti);
+<<<<<<< HEAD
         String pirkko = app.searchCardsById(53);
-System.out.println(pirkko); */
+System.out.println(pirkko);
+
+        String pirkko = app.searchCardsById(35245);
+        System.out.println(pirkko); */
+
 
     }
 
