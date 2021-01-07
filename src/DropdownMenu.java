@@ -15,14 +15,12 @@ public class DropdownMenu extends JPanel {
         dropDown.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (wasClicked == false && dropDown.getSelectedIndex() != 0) {
-                    dropDown.removeItemAt(0);
-                    wasClicked = true;
+                 if (wasClicked == false && dropDown.getSelectedIndex() != 0) {
+                     dropDown.removeItemAt(0);
+                     wasClicked = true;
                 }
             }
         });
-
-
 
 
         this.add(dropDown);
@@ -31,6 +29,15 @@ public class DropdownMenu extends JPanel {
 
     }
 
+    public Boolean isTypeSelected() {
+        if (dropDown.getSelectedIndex() !=0)
+            return true;
+        else return false;
+    }
 
+    public String getSelected() {
+
+        return String.valueOf(dropDown.getSelectedItem());
+    }
 
 }

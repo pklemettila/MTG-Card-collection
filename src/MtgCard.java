@@ -8,19 +8,17 @@ import java.io.File;
 
 public class MtgCard extends JPanel {     // Class representing a single MTG card
 
-    private String name;
     private int idNumber;
 
-    public MtgCard(String n, int id) {
+    public MtgCard(int id) {
 
         Database app = new Database();
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        this.name = n;
-        this.idNumber = idNumber;
+        this.idNumber = id;
 
-        JLabel cardImageLabel = checkCardImage(this.name);
+        JLabel cardImageLabel = checkCardImage(id);
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 0;
         c.gridwidth = 2;
@@ -29,7 +27,6 @@ public class MtgCard extends JPanel {     // Class representing a single MTG car
         c.gridy = 0;
         c.insets = new Insets(0, 0, 0, 0);
         this.add(cardImageLabel, c);
-
 
 
         JLabel priceLabel = new JLabel("Price: " + app.getPrice(id));
@@ -92,16 +89,15 @@ public class MtgCard extends JPanel {     // Class representing a single MTG car
 
 
 
-    private JLabel checkCardImage(String name) {   // Gets an image of the specific MTG card from the directory. If no image is available, uses a placeholder
+    private JLabel checkCardImage(int id) {   // Gets an image of the specific MTG card from the directory. If no image is available, uses a placeholder
 
-/*
+        Database app = new Database();
 
-*/
         JLabel LabelToReturn = new JLabel();
         ImageIcon rawImage;
         Image imgImage;
 
-        String imgName = name.replaceAll("\\s+","_");
+        String imgName = Integer.toString(id);
 
         if ((this.getClass().getResource("/images/cards/" + imgName + ".jpg") != null)) {
 
@@ -110,7 +106,7 @@ public class MtgCard extends JPanel {     // Class representing a single MTG car
         } else {
 
             rawImage = new ImageIcon(this.getClass().getResource("/images/cards/tempCard.jpg"));
-            LabelToReturn.setText(name);
+            LabelToReturn.setText(app.searchCardsById(id));
             LabelToReturn.setHorizontalTextPosition(JLabel.CENTER);
 
         }

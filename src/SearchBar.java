@@ -6,13 +6,15 @@ import java.awt.event.ActionListener;
 public class SearchBar extends JPanel {
 
 
+    private JButton searchButton;
+    private JTextField searchField;
 
      public SearchBar() {
-         /*
+
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-        JTextField searchField = new JTextField();
+        searchField = new JTextField();
         searchField.setBorder(BorderFactory.createEmptyBorder());
-        JButton searchButton = new JButton(new ImageIcon(this.getClass().getResource("images/maglass.png")));
+        searchButton = new JButton(new ImageIcon(this.getClass().getResource("images/maglass.png")));
         Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
         this.setBorder(lowbevelborder);
 
@@ -25,9 +27,22 @@ public class SearchBar extends JPanel {
 
 
         this.add(searchField);
-        this.add(searchButton); */
+        this.add(searchButton);
 
     }
 
+    public void makeSearchClickable(ActionListener actionListener) {
 
+    searchButton.addActionListener(actionListener);
+
+    }
+
+    public boolean hasText() {
+         if (searchField.getText().isEmpty())
+             return false;
+         else return true;
+    }
+    public String getText() {
+         return searchField.getText();
+    }
 }

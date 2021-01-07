@@ -10,6 +10,7 @@ import java.awt.Dimension;
 public class MainInterface {
   final static boolean shouldFill = true;
   final static boolean shouldWeightX = true;
+  private static ArrayList<MtgCard> showedCards;
 
   public MainInterface() {
     JFrame frame = new JFrame();
@@ -70,7 +71,7 @@ public class MainInterface {
 
 
 
-    PriceRange from = new PriceRange();
+    PriceRange fromTo = new PriceRange();
     c.fill = GridBagConstraints.HORIZONTAL;
     c.weightx = 0;
     c.gridx = 8;
@@ -78,7 +79,7 @@ public class MainInterface {
     c.anchor = GridBagConstraints.LINE_START;
     c.insets = new Insets(0, 0, 0, 35);
     c.gridheight = 1;
-    pane.add(from, c);
+    pane.add(fromTo, c);
 
 
     // Fourth row.
@@ -168,10 +169,9 @@ public class MainInterface {
     c.gridy = 6;
     pane.add(scrollableArea, c);
 
-     ArrayList<MtgCard> showedCards = new ArrayList<MtgCard>(
-            Arrays.asList(new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686), new MtgCard("Massacre Wurm",  29686)));
+    /*  showedCards = new ArrayList<MtgCard>(Arrays.asList(new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686), new MtgCard(29686)));
 
-     for (int i=0; i<showedCards.size(); i++) {
+     for (int i = 0; i< showedCards.size(); i++) {
        GridBagConstraints cardC = new GridBagConstraints();
        cardC.fill = GridBagConstraints.HORIZONTAL;
        cardC.weightx = 0;
@@ -182,7 +182,7 @@ public class MainInterface {
        cardC.insets = new Insets(20, 10, 10, 10);
        scrollAreaPane.add(showedCards.get(i), cardC);
 
-     }
+     } */
 
 
 
@@ -198,27 +198,42 @@ public class MainInterface {
     pane.add(helpButton, c);
 
 
-    SearchBar search = new SearchBar();
-
+    JPanel search = new JPanel();
     search.setLayout(new BoxLayout(search, BoxLayout.LINE_AXIS));
     JTextField searchField = new JTextField();
     searchField.setBorder(BorderFactory.createEmptyBorder());
     JButton searchButton = new JButton(new ImageIcon(this.getClass().getResource("images/maglass.png")));
-    searchButton.setBackground(Color.WHITE);
     Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
     search.setBorder(lowbevelborder);
-
 
     searchButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        if(scBox.getNameState() == true)
-          searchField.setText("Thor!!!");
+                showedCards = searchFunction(manaSymbols.getWhiteState(), manaSymbols.getBlueState(), manaSymbols.getBlackState(), manaSymbols.getRedState(), manaSymbols.getGreenState(), manaSymbols.getColorlessState(),
+                manaSymbols.getMulticolorState(), rarityCheckBox.getCommonState(), rarityCheckBox.getUncommonState(), rarityCheckBox.getRareState(), rarityCheckBox.getMythicState(),
+                fromTo.fromHasText(), fromTo.getFromNumber(), fromTo.toHasText(), fromTo.getToNumber(), collected.isSelected(), dropD.isTypeSelected(), dropD.getSelected(),
+                !searchField.toString().isEmpty(), scBox.getNameState(), scBox.getArtistStatus(), scBox.getKeyWordState(), searchField.getText());
+
+        for (int i = 0; i< showedCards.size(); i++) {
+          GridBagConstraints cardC = new GridBagConstraints();
+          cardC.fill = GridBagConstraints.HORIZONTAL;
+          cardC.weightx = 0;
+          cardC.gridwidth = 1;
+          cardC.gridheight = 1;
+          cardC.gridx = i % 4;
+          cardC.gridy = i / 4;
+          cardC.insets = new Insets(20, 10, 10, 10);
+          scrollAreaPane.add(showedCards.get(i), cardC);
+
+        }
+
       }
     });
 
+
     search.add(searchField);
     search.add(searchButton);
+
     c.fill = GridBagConstraints.BOTH;
     c.weightx = 1;
     c.gridwidth = 1;
@@ -228,6 +243,8 @@ public class MainInterface {
     c.insets = new Insets(5, 50, 5, 10);
     pane.add(search, c);
 
+
+
     frame.pack();
     frame.setMinimumSize(new Dimension(950, 600));
     frame.setVisible(true);
@@ -236,6 +253,24 @@ public class MainInterface {
 
   }
 
+  private ArrayList<MtgCard> searchFunction(boolean filterW, boolean filterU, boolean filterB, boolean filterR,
+                                            boolean filterG, boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon,
+                                            boolean filterRare, boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh,
+                                            double priceMax, boolean owned, boolean cardTypeSelected, String cardType, boolean searchField,
+                                            boolean searchByName, boolean searchByArtist, boolean searchByKeyword, String search) {
+
+    Database app = new Database();
+    ArrayList<Integer> listedIDs  = app.searchAll(filterW, filterU, filterB, filterR, filterG, filterC, filterM, filterCommon, filterUncommon, filterRare, filterMythic, priceLow, priceMin, priceHigh,
+                                    priceMax, owned, cardTypeSelected, cardType, searchField, searchByName, searchByArtist, searchByKeyword, search);
+    ArrayList<MtgCard> cardList = new ArrayList<>();
+
+    for(int i=0; i < 20; i++) {
+      cardList.add(new MtgCard(listedIDs.get(i)));
+    }
+
+    return cardList;
+
+  }
 
 
 }

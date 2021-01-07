@@ -17,7 +17,7 @@ public class CollectorMain {
     public static void main(String[] args) {
         MainInterface minterface = new MainInterface();
         Database app = new Database();
-        //app.getPrice(15);
+      /*  //app.getPrice(15);
         //app.substractFromOwned(3);
         //app.addToOwned(2543);
         //app.getOwnedCards();
@@ -33,7 +33,7 @@ public class CollectorMain {
         System.out.println(num);
         System.out.println(matti);
         String pirkko = app.searchCardsById(53);
-System.out.println(pirkko);
+System.out.println(pirkko); */
 
     }
 
