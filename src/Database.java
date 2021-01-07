@@ -202,7 +202,7 @@ public class Database {
                 orPriceStatement.add("price < " + priceMax);
             }
 
-            sql += " AND ( " + String.join(" OR ", orPriceStatement) + ")";
+            sql += " AND ( " + String.join(" AND ", orPriceStatement) + ")";
 
         }
 
