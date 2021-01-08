@@ -53,14 +53,18 @@ public class MtgCard extends JPanel {     // Class representing a single MTG car
         c.insets = new Insets(0, 60, 0, 0);
         this.add(ownedLabel, c);
 
-        JButton plusButton = new JButton("+");
+        JButton plusButton = new JButton();
+        plusButton.setIcon(new ImageIcon(this.getClass().getResource("/images/plusimage.png")));
+        plusButton.setBorder(BorderFactory.createEmptyBorder());
+        plusButton.setContentAreaFilled(false);
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;
         c.gridwidth = 1;
         c.gridheight = 1;
         c.gridx =  3;
         c.gridy = 0;
-        c.insets = new Insets(0,10, 0, 0);
+        c.insets = new Insets(10,10, 0, 15);
 
         plusButton.addActionListener(new ActionListener() {
             @Override
@@ -71,14 +75,17 @@ public class MtgCard extends JPanel {     // Class representing a single MTG car
 
         this.add(plusButton, c);
 
-        JButton minusButton = new JButton("-");
+        JButton minusButton = new JButton();
+        minusButton.setIcon(new ImageIcon(this.getClass().getResource("/images/minusimage.png")));
+        minusButton.setBorder(BorderFactory.createEmptyBorder());
+        minusButton.setContentAreaFilled(false);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;
         c.gridwidth = 1;
         c.gridheight = 1;
         c.gridx =  3;
         c.gridy = 1;
-        c.insets = new Insets(0, 10, 0, 0);
+        c.insets = new Insets(0, 10, 150, 15);
 
         minusButton.addActionListener(new ActionListener() {
             @Override

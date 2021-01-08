@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class HelpWindow extends JDialog{
 
 
-    public HelpWindow(JFrame f) {
+    public HelpWindow(JFrame f) {   // Creating the help window with boxlayout
         super(f, "HELP");
 
             JPanel infoPanel = new JPanel();
