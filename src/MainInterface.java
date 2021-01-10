@@ -209,15 +209,24 @@ public class MainInterface {
     Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
     search.setBorder(lowbevelborder);
 
-    searchButton.addActionListener(new ActionListener() {     // Using the searchfunction and filling the grid with the found cards
+    searchButton.addActionListener(new ActionListener() {     // Using the searchfunction and filling the grid with the found cards. Displays an error msg if no cards are found
       @Override
       public void actionPerformed(ActionEvent e) {
 
         scrollAreaPane.removeAll();
+        scrollAreaPane.revalidate();
+
         showedCards = searchFunction(manaSymbols.getWhiteState(), manaSymbols.getBlueState(), manaSymbols.getBlackState(), manaSymbols.getRedState(), manaSymbols.getGreenState(), manaSymbols.getColorlessState(),
                 manaSymbols.getMulticolorState(), rarityCheckBox.getCommonState(), rarityCheckBox.getUncommonState(), rarityCheckBox.getRareState(), rarityCheckBox.getMythicState(),
                 fromTo.fromHasText(), fromTo.getFromNumber(), fromTo.toHasText(), fromTo.getToNumber(), collected.isSelected(), dropD.isTypeSelected(), dropD.getSelected(),
                 !searchField.toString().isEmpty(), scBox.getNameState(), scBox.getArtistStatus(), scBox.getKeyWordState(), searchField.getText());
+
+
+
+        if(showedCards.size() == 0) {
+          scrollAreaPane.add(new JLabel("No cards found"));
+        }
+
         for (int i = 0; i< showedCards.size(); i++) {
           GridBagConstraints cardC = new GridBagConstraints();
           cardC.fill = GridBagConstraints.HORIZONTAL;
@@ -277,6 +286,8 @@ public class MainInterface {
     for(int i=0; i < listedIDs.size(); i++) {
       cardList.add(new MtgCard(listedIDs.get(i)));
     }
+
+
 
     return cardList;
 
