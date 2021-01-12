@@ -209,7 +209,8 @@ public class MainInterface {
     Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
     search.setBorder(lowbevelborder);
 
-    searchButton.addActionListener(new ActionListener() {     // Using the searchfunction and filling the grid with the found cards. Displays an error msg if no cards are found
+    // Using the searchfunction and filling the grid with the found cards. Displays an error msg if no cards are found
+    searchButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
 

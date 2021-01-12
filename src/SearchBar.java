@@ -18,12 +18,6 @@ public class SearchBar extends JPanel {
         Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
         this.setBorder(lowbevelborder);
 
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // nothing happens
-            }
-        });
 
 
         this.add(searchField);

@@ -17,7 +17,7 @@ public class DropdownMenu extends JPanel {
 
 
     }
-
+    // checks if a card type is selected
     public Boolean isTypeSelected() {
         if (String.valueOf(dropDown.getSelectedItem()) != "All Card Types")
             return true;

@@ -21,13 +21,13 @@ public class PriceRange extends JPanel {
         this.add(toField);
 
     }
-
-    public boolean fromHasText() {      //Returns whether or not 'from' has text
+    //Returns whether or not 'from' has text
+    public boolean fromHasText() {
         if (fromField.getText().isEmpty())
             return false;
         else return true;
     }
-
+    //Returns whether or not 'to' has text
     public boolean toHasText() {       //Returns whether or not 'to' has text
         if (toField.getText().isEmpty())
             return false;

@@ -57,8 +57,8 @@ public class ManaSymbols extends JPanel {
 
     }
 
-
-    private JToggleButton createButton(String colorSource) {  // Creating a new mana symbol toggle button with an action listener that changes the icon upon mouse click
+    // Creating a new mana symbol toggle button with an action listener that changes the icon upon mouse click
+    private JToggleButton createButton(String colorSource) {
 
         JToggleButton returnButton = new JToggleButton();
         ImageIcon ManaIcon = new ImageIcon(this.getClass().getResource(colorSource + ".png"));
