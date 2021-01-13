@@ -1,10 +1,8 @@
-import javax.print.attribute.standard.JobKOctets;
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+
 
 public class MtgCard extends JPanel {     // Class representing a single MTG card
 
@@ -16,7 +14,7 @@ public class MtgCard extends JPanel {     // Class representing a single MTG car
 
     public MtgCard(int id) {
 
-        Database app = new Database();
+
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -32,7 +30,7 @@ public class MtgCard extends JPanel {     // Class representing a single MTG car
         c.insets = new Insets(0, 0, 0, 0);
         this.add(cardImageLabel, c);
 
-
+        Database app = new Database();
         JLabel priceLabel = new JLabel("Price: " + app.getPrice(id));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;

@@ -4,12 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.util.ArrayList;
 import java.util.*;
 
 public class Database {
 
-    private boolean add;
 
     private Connection connect() {
 
@@ -235,7 +233,7 @@ public class Database {
             }
             sql += " AND ( " + String.join(" OR ", searchByArrayList) + ")";
         }
-sql += " LIMIT 25";
+sql += " LIMIT 32";
 
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
