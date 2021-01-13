@@ -4,176 +4,152 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.*;
-import java.awt.Image;
 import java.awt.Dimension;
 
 public class MainInterface {
-  final static boolean shouldFill = true;
-  final static boolean shouldWeightX = true;
-  private static  ArrayList<MtgCard> showedCards = new ArrayList<MtgCard>(Arrays.asList(new MtgCard(1), new MtgCard(2), new MtgCard(3), new MtgCard(4)
-          , new MtgCard(5), new MtgCard(6), new MtgCard(7), new MtgCard(8)));; // initializing showed cards with 8 different cards
 
+ 
+  static ManaSymbols manaSymbols = new ManaSymbols();
+  static PriceRange fromTo = new PriceRange();
+  static SearchCheckBoxes scBox = new SearchCheckBoxes();
+  static RarityCheckBoxes rarityCheckBox = new RarityCheckBoxes();
+  static DropdownMenu dropD = new DropdownMenu();
+  static JCheckBox collected = new JCheckBox("Show only collected");
+  static JFrame f = new JFrame();
+  static HelpButton helpButton = new HelpButton(f);
+  static JPanel scrollAreaPane = new JPanel();
+  static JScrollPane scrollableArea = new JScrollPane(scrollAreaPane);
+  static Database app = new Database();
+  private static ArrayList<MtgCard> showedCards = new ArrayList<MtgCard>(Arrays.asList(new MtgCard(1), new MtgCard(2),
+      new MtgCard(3), new MtgCard(4), new MtgCard(5), new MtgCard(6), new MtgCard(7), new MtgCard(8)));;
 
-  public MainInterface() {
-    JFrame frame = new JFrame();
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    Container pane = frame.getContentPane();
-    pane.setLayout(new GridBagLayout());
-    GridBagConstraints c = new GridBagConstraints();
-    c.fill = GridBagConstraints.HORIZONTAL;
-    if (shouldFill) {
-      c.fill = GridBagConstraints.HORIZONTAL;
-    }
-
-    JButton button;
-
-    // First row. Only has one column that spans all 10 columns (c.gridwidth = 10).
-    // All rows have ten columns.
-
+  public static void headerArea(Container pane) {
     Header header = new Header();
-    c.fill = GridBagConstraints.BOTH;
-    c.weightx = 1.0;
-    c.gridwidth = 10;
-    c.gridx = 0;
-    c.gridy = 0;
-    c.anchor = GridBagConstraints.CENTER;
-    c.insets = new Insets(30, 30, 30, 0);
-    pane.add(header, c);
+    GridBagConstraints headerc = new GridBagConstraints();
+    headerc.fill = GridBagConstraints.BOTH;
+    headerc.gridx = 0;
+    headerc.gridy = 0;
+    headerc.gridwidth = 3;
+    headerc.insets = new Insets(30, 30, 10, 30);
+    pane.add(header, headerc);
+  }
 
-    // Second row. Has text "Price:". Shares half of search box and manasymbols with
-    // third row.
+  public static void secondAndThirdRow(Container pane, JButton searchButton) {
+
+    searchTextBox(pane, searchButton);
+    GridBagConstraints searchc = new GridBagConstraints();
+    searchc.fill = GridBagConstraints.HORIZONTAL;
+    searchc.gridx = 1;
+    searchc.gridy = 1;
+    searchc.gridheight = 2;
+    searchc.gridwidth = 1;
+    searchc.weightx = 1.0;
+    searchc.insets = new Insets(0, 10, 0, 50);
+    pane.add(manaSymbols, searchc);
 
     JLabel price = new JLabel("Price");
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.weightx = 1;
-    c.gridwidth = 1;
-    c.gridx = 8;
-    c.gridy = 1;
-    c.ipadx = 0;
-    c.anchor = GridBagConstraints.LINE_START;
-    c.insets = new Insets(0, 5, 0, 30);
-    pane.add(price, c);
+    GridBagConstraints pricec = new GridBagConstraints();
+    pricec.fill = GridBagConstraints.HORIZONTAL;
+    pricec.gridx = 2;
+    pricec.gridy = 1;
+    pricec.gridheight = 1;
+    pricec.gridwidth = 1;
+    pricec.insets = new Insets(0, 0, 0, 10);
+    pane.add(price, pricec);
 
-    // In the Third row most elements start from row 1 (row 1 = second row). Has
-    // searchbar, 7 manabuttons and two price range columns.
+    GridBagConstraints fromToc = new GridBagConstraints();
+    fromToc.fill = GridBagConstraints.HORIZONTAL;
+    fromToc.gridx = 2;
+    fromToc.gridy = 2;
+    fromToc.gridheight = 1;
+    fromToc.gridwidth = 1;
+    fromToc.insets = new Insets(0, -4, 0, 40);
+    pane.add(fromTo, fromToc);
+  }
 
-
-
-
-    ManaSymbols manaSymbols = new ManaSymbols();
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.weightx = 0;
-    c.gridheight = 2;
-    c.gridwidth = 7;
-    c.gridx = 1;
-    c.gridy = 1;
-    c.insets = new Insets(5, 40, 5, 40);
-    pane.add(manaSymbols, c);
-
-
-
-    PriceRange fromTo = new PriceRange();
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.weightx = 0;
-    c.gridx = 8;
-    c.gridy = 2;
-    c.anchor = GridBagConstraints.LINE_START;
-    c.insets = new Insets(0, 0, 0, 35);
-    c.gridheight = 1;
-    pane.add(fromTo, c);
-
-
-    // Fourth row.
+  public static void fourthAndFifthRow(Container pane) {
 
     JLabel searchText = new JLabel("Search:");
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.weightx = 0;
-    c.gridwidth = 1;
-    c.gridx = 0;
-    c.gridy = 3;
-    c.insets = new Insets(5, 72, 0, 10);
-    pane.add(searchText, c);
+    GridBagConstraints searchTextc = new GridBagConstraints();
+    searchTextc.fill = GridBagConstraints.HORIZONTAL;
+    searchTextc.gridx = 0;
+    searchTextc.gridy = 3;
+    searchTextc.gridwidth = 1;
+    searchTextc.gridheight = 1;
+    searchTextc.insets = new Insets(0, 70, 0, 0);
+    pane.add(searchText, searchTextc);
 
     JLabel searchRarity = new JLabel("Rarity:");
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.weightx = 0;
-    c.gridwidth = 7;
-    c.insets = new Insets(5, 48, 0, 10);
-    c.anchor = GridBagConstraints.LINE_START;
-    c.gridx = 1;
-    c.gridy = 3;
-    pane.add(searchRarity, c);
+    GridBagConstraints rarityc = new GridBagConstraints();
+    rarityc.fill = GridBagConstraints.HORIZONTAL;
+    rarityc.gridx = 1;
+    rarityc.gridy = 3;
+    rarityc.gridheight = 1;
+    rarityc.gridwidth = 1;
+    rarityc.insets = new Insets(0, 120, 0, 0);
+    pane.add(searchRarity, rarityc);
 
-    // Card Type Dropdown
+    GridBagConstraints dropdc = new GridBagConstraints();
+    dropdc.fill = GridBagConstraints.HORIZONTAL;
+    dropdc.gridwidth = 1;
+    dropdc.gridheight = 2;
+    dropdc.gridx = 2;
+    dropdc.gridy = 3;
+    dropdc.insets = new Insets(0, 0, 0, 40);
+    pane.add(dropD, dropdc);
 
-    DropdownMenu dropD = new DropdownMenu();
-    c.fill = GridBagConstraints.BOTH;
-    c.weightx = 0;
-    c.gridwidth = 1;
-    c.gridheight = 2;
-    c.gridx = 8;
-    c.gridy = 3;
-    c.insets = new Insets(10, 5, 10, 125);
-    pane.add(dropD, c);
+    GridBagConstraints scBoxc = new GridBagConstraints();
+    scBoxc.fill = GridBagConstraints.HORIZONTAL;
+    scBoxc.gridy = 4;
+    scBoxc.gridx = 0;
+    scBoxc.gridwidth = 1;
+    scBoxc.gridheight = 1;
+    scBoxc.insets = new Insets(0, 40, 0, 0);
+    pane.add(scBox, scBoxc);
 
-    // Fifth row. Notice that CardType button starts in row 3 and spans to row 4
+    GridBagConstraints rarityCheckc = new GridBagConstraints();
+    rarityCheckc.fill = GridBagConstraints.HORIZONTAL;
+    rarityCheckc.gridy = 4;
+    rarityCheckc.gridx = 1;
+    rarityCheckc.gridwidth = 1;
+    rarityCheckc.gridheight = 1;
+    rarityCheckc.insets = new Insets(0, 0, 0, 0);
+    pane.add(rarityCheckBox, rarityCheckc);
+  }
 
-    SearchCheckBoxes scBox = new SearchCheckBoxes();
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.ipady = 0;
-    c.weighty = 0;
-    c.gridx = 0;
-    c.insets = new Insets(-5, 25, 5, 10);
-    c.anchor = GridBagConstraints.LINE_START;
-    c.gridwidth = 1;
-    c.gridheight = 1;
-    c.gridy = 4;
-    pane.add(scBox, c);
-
-    RarityCheckBoxes rarityCheckBox = new RarityCheckBoxes();
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.weighty = 0;
-    c.gridx = 1;
-    c.gridwidth = 7;
-    c.insets = new Insets(-5, 0, 5, 20);
-    c.gridy = 4;
-    pane.add(rarityCheckBox, c);
-
-    // Sixth row.
-
-    JCheckBox collected = new JCheckBox("Show only collected");
-    Font collectedFont=new Font(collected.getFont().getName(),collected.getFont().getStyle(),18);
+  public static void collectedCheckBox(Container pane) {
+    GridBagConstraints collectedc = new GridBagConstraints();
+    collectedc.fill = GridBagConstraints.HORIZONTAL;
+    Font collectedFont = new Font(collected.getFont().getName(), collected.getFont().getStyle(), 18);
     collected.setFont(collectedFont);
-    c.fill = GridBagConstraints.NONE;
-    c.weightx = 1;
-    c.gridheight = 1;
-    c.gridwidth = 9;
-    c.gridx = 3;
-    c.gridy = 5;
-    c.insets = new Insets(5, 0, 0, 0);
-    pane.add(collected, c);
+    collectedc.fill = GridBagConstraints.HORIZONTAL;
+    collectedc.gridx = 1;
+    collectedc.gridy = 5;
+    collectedc.gridheight = 1;
+    collectedc.gridwidth = 1;
+    collectedc.insets = new Insets(0, 180, 0, 40);
+    pane.add(collected, collectedc);
 
-    // Scroller
+  }
+
+  public static void cardArea(Container pane) {
 
 
-    JPanel scrollAreaPane = new JPanel();
+    GridBagConstraints scrollableAreac = new GridBagConstraints();
+    scrollableAreac.fill = GridBagConstraints.HORIZONTAL;
     scrollAreaPane.setLayout(new GridBagLayout());
-    JScrollPane scrollableArea = new JScrollPane(scrollAreaPane);
     scrollableArea.setPreferredSize(new Dimension(300, 300));
     scrollableArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-    c.fill = GridBagConstraints.BOTH;
-    c.anchor = GridBagConstraints.CENTER;
-    c.weightx = 1;
-    c.gridheight = 4;
-    c.gridwidth = 10;
-    c.insets = new Insets(0, 30, 5, 30);
-    c.gridx = 0;
-    c.gridy = 6;
-    pane.add(scrollableArea, c);
+    scrollableArea.setCorner(JScrollPane.LOWER_LEFT_CORNER, helpButton);
+    scrollableAreac.fill = GridBagConstraints.BOTH;
+    scrollableAreac.gridheight = 4;
+    scrollableAreac.gridwidth = 3;
+    scrollableAreac.insets = new Insets(0, 40, 5, 40);
+    scrollableAreac.gridx = 0;
+    scrollableAreac.gridy = 6;
+    pane.add(scrollableArea, scrollableAreac);
 
-
-    for (int i = 0; i< showedCards.size(); i++) {
+    for (int i = 0; i < showedCards.size(); i++) {
       GridBagConstraints cardC = new GridBagConstraints();
       cardC.fill = GridBagConstraints.HORIZONTAL;
       cardC.weightx = 0;
@@ -186,30 +162,31 @@ public class MainInterface {
       scrollAreaPane.revalidate();
 
     }
+  }
 
+  public static void help (Container pane) {
 
+    GridBagConstraints helpc = new GridBagConstraints();
+    helpc.fill = GridBagConstraints.HORIZONTAL;
+    helpc.fill = GridBagConstraints.NONE;
+    helpc.weightx = 0;
+    helpc.gridheight = 1;
+    helpc.gridwidth = 1;
+    helpc.anchor = GridBagConstraints.LINE_START;
+    helpc.gridx = 0;
+    helpc.gridy = 10;
+    helpc.insets = new Insets(0, 0, 0, 0);
+    pane.add(helpButton, helpc);
+  }
 
-    HelpButton helpButton = new HelpButton(frame);
-    c.fill = GridBagConstraints.NONE;
-    c.weightx = 0;
-    c.gridheight = 1;
-    c.gridwidth = 1;
-    c.anchor = GridBagConstraints.LINE_START;
-    c.gridx = 0;
-    c.gridy = 11;
-    c.insets = new Insets(0, 0, 0, 0);
-    pane.add(helpButton, c);
-
+  public static void searchTextBox(Container pane, JButton searchButton) {
 
     JPanel search = new JPanel();
     search.setLayout(new BoxLayout(search, BoxLayout.LINE_AXIS));
     JTextField searchField = new JTextField();
     searchField.setBorder(BorderFactory.createEmptyBorder());
-    JButton searchButton = new JButton(new ImageIcon(this.getClass().getResource("images/maglass.png")));
     Border lowbevelborder = BorderFactory.createLoweredBevelBorder();
     search.setBorder(lowbevelborder);
-
-    // Using the searchfunction and filling the grid with the found cards. Displays an error msg if no cards are found
     searchButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -217,18 +194,19 @@ public class MainInterface {
         scrollAreaPane.removeAll();
         scrollAreaPane.revalidate();
 
-        showedCards = searchFunction(manaSymbols.getWhiteState(), manaSymbols.getBlueState(), manaSymbols.getBlackState(), manaSymbols.getRedState(), manaSymbols.getGreenState(), manaSymbols.getColorlessState(),
-                manaSymbols.getMulticolorState(), rarityCheckBox.getCommonState(), rarityCheckBox.getUncommonState(), rarityCheckBox.getRareState(), rarityCheckBox.getMythicState(),
-                fromTo.fromHasText(), fromTo.getFromNumber(), fromTo.toHasText(), fromTo.getToNumber(), collected.isSelected(), dropD.isTypeSelected(), dropD.getSelected(),
-                !searchField.toString().isEmpty(), scBox.getNameState(), scBox.getArtistStatus(), scBox.getKeyWordState(), searchField.getText());
+        showedCards = searchFunction(manaSymbols.getWhiteState(), manaSymbols.getBlueState(),
+            manaSymbols.getBlackState(), manaSymbols.getRedState(), manaSymbols.getGreenState(),
+            manaSymbols.getColorlessState(), manaSymbols.getMulticolorState(), rarityCheckBox.getCommonState(),
+            rarityCheckBox.getUncommonState(), rarityCheckBox.getRareState(), rarityCheckBox.getMythicState(),
+            fromTo.fromHasText(), fromTo.getFromNumber(), fromTo.toHasText(), fromTo.getToNumber(),
+            collected.isSelected(), dropD.isTypeSelected(), dropD.getSelected(), !searchField.toString().isEmpty(),
+            scBox.getNameState(), scBox.getArtistStatus(), scBox.getKeyWordState(), searchField.getText());
 
-
-
-        if(showedCards.size() == 0) {
+        if (showedCards.size() == 0) {
           scrollAreaPane.add(new JLabel("No cards found"));
         }
 
-        for (int i = 0; i< showedCards.size(); i++) {
+        for (int i = 0; i < showedCards.size(); i++) {
           GridBagConstraints cardC = new GridBagConstraints();
           cardC.fill = GridBagConstraints.HORIZONTAL;
           cardC.weightx = 0;
@@ -242,59 +220,46 @@ public class MainInterface {
 
         }
 
-
-
       }
     });
 
-
     search.add(searchField);
     search.add(searchButton);
-
+    GridBagConstraints c = new GridBagConstraints();
     c.fill = GridBagConstraints.BOTH;
-    c.weightx = 1;
     c.gridwidth = 1;
     c.gridheight = 2;
     c.gridx = 0;
     c.gridy = 1;
-    c.insets = new Insets(5, 50, 5, 10);
+    c.weightx = 1;
+    c.weighty = 0.5;
+    c.insets = new Insets(5, 40, 5, 40);
     pane.add(search, c);
-
-
-
-
-
-    frame.pack();
-    frame.setMinimumSize(new Dimension(950, 600));
-    frame.setVisible(true);
-    frame.setLocationRelativeTo(null);
-    frame.setResizable(false);
 
   }
 
-  // this searchfunction returns an ArrayList of MtgCards, created based on primary keys acquired from the database.
-    private ArrayList<MtgCard> searchFunction(boolean filterW, boolean filterU, boolean filterB, boolean filterR,
-                                            boolean filterG, boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon,
-                                            boolean filterRare, boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh,
-                                            double priceMax, boolean owned, boolean cardTypeSelected, String cardType, boolean searchField,
-                                            boolean searchByName, boolean searchByArtist, boolean searchByKeyword, String search) {
+  /*
+   * this search method returns an ArrayList of MtgCards, created based on primary
+   * 
+   * keys acquired from the database.
+   */
+  private static ArrayList<MtgCard> searchFunction(boolean filterW, boolean filterU, boolean filterB, boolean filterR,
+      boolean filterG, boolean filterC, boolean filterM, boolean filterCommon, boolean filterUncommon,
+      boolean filterRare, boolean filterMythic, boolean priceLow, double priceMin, boolean priceHigh, double priceMax,
+      boolean owned, boolean cardTypeSelected, String cardType, boolean searchField, boolean searchByName,
+      boolean searchByArtist, boolean searchByKeyword, String search) {
 
-    Database app = new Database();
-    ArrayList<Integer> listedIDs  = app.searchAll(filterW, filterU, filterB, filterR, filterG, filterC, filterM, filterCommon, filterUncommon, filterRare, filterMythic, priceLow, priceMin, priceHigh,
-                                    priceMax, owned, cardTypeSelected, cardType, searchField, searchByName, searchByArtist, searchByKeyword, search);
+    ArrayList<Integer> listedIDs = app.searchAll(filterW, filterU, filterB, filterR, filterG, filterC, filterM,
+        filterCommon, filterUncommon, filterRare, filterMythic, priceLow, priceMin, priceHigh, priceMax, owned,
+        cardTypeSelected, cardType, searchField, searchByName, searchByArtist, searchByKeyword, search);
     ArrayList<MtgCard> cardList = new ArrayList<>();
 
-    for(int i=0; i < listedIDs.size(); i++) {
+    for (int i = 0; i < listedIDs.size(); i++) {
       cardList.add(new MtgCard(listedIDs.get(i)));
     }
-
-
 
     return cardList;
 
   }
-
-
-
 
 }

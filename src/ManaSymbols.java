@@ -20,39 +20,39 @@ public class ManaSymbols extends JPanel {
 
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
-
+        this.add(Box.createRigidArea(new Dimension(30,0)));
         this.whiteManaButton = createButton("/images/mana/white_mana");
         this.add(whiteManaButton);
-        this.add(Box.createRigidArea(new Dimension(20,0)));
+        this.add(Box.createRigidArea(new Dimension(30,0)));
 
 
         this.blueManaButton = createButton("/images/mana/blue_mana");
         this.add(blueManaButton);
-        this.add(Box.createRigidArea(new Dimension(20,0)));
+        this.add(Box.createRigidArea(new Dimension(30,0)));
 
         this.blackManaButton = createButton("/images/mana/black_mana");
         this.add(blackManaButton);
-        this.add(Box.createRigidArea(new Dimension(20,0)));
+        this.add(Box.createRigidArea(new Dimension(30,0)));
 
 
         this.redManaButton = createButton("/images/mana/red_mana");
         this.add(redManaButton);
-        this.add(Box.createRigidArea(new Dimension(20,0)));
+        this.add(Box.createRigidArea(new Dimension(30,0)));
 
 
         this.greenManaButton = createButton("/images/mana/green_mana");
         this.add(greenManaButton);
-        this.add(Box.createRigidArea(new Dimension(20,0)));
+        this.add(Box.createRigidArea(new Dimension(30,0)));
 
 
         this.colorlessManaButton = createButton("/images/mana/colorless_mana");
         this.add(colorlessManaButton);
-        this.add(Box.createRigidArea(new Dimension(20,0)));
+        this.add(Box.createRigidArea(new Dimension(30,0)));
 
 
         this.multicolorManaButton = createButton("/images/mana/multicolor_mana");
         this.add(multicolorManaButton);
-
+        this.add(Box.createRigidArea(new Dimension(10,0)));
 
 
     }
