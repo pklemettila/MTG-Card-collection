@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class HelpButton extends JButton {
 
-
+    static final long serialVersionUID = 42L;
 public HelpButton(JFrame f) {
 
     this.setIcon(new ImageIcon(this.getClass().getResource("/images/Help.png")));

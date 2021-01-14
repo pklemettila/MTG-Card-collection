@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class SearchCheckBoxes extends JPanel {
-
+    static final long serialVersionUID = 42L;
 
     private JCheckBox name = new JCheckBox("Name");
     private JCheckBox keyword = new JCheckBox("Keyword");

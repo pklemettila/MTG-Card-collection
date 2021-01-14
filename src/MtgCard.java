@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 
 public class MtgCard extends JPanel {     // Class representing a single MTG card
-
+    static final long serialVersionUID = 42L;
     public int getIdNumber() {
         return this.idNumber;
     }
