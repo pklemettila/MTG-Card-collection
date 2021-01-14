@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PriceRange extends JPanel {
-
+    static final long serialVersionUID = 42L;
     JLabel label;
     JTextField fromField;
     JTextField toField;

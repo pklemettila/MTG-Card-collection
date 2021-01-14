@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ManaSymbols extends JPanel {
-
+    static final long serialVersionUID = 42L;
     private JToggleButton whiteManaButton;
 
 

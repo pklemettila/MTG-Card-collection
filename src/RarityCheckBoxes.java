@@ -2,7 +2,7 @@ import javax.swing.*;
 
 
 public class RarityCheckBoxes extends JPanel {
-
+    static final long serialVersionUID = 42L;
     private JCheckBox common = new JCheckBox("Common     ");
     private JCheckBox uncommon = new JCheckBox("Uncommon   ");
     private JCheckBox rare = new JCheckBox("Rare       ");
