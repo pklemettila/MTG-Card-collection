@@ -20,8 +20,10 @@ public class MainInterface {
   static JPanel scrollAreaPane = new JPanel();
   static JScrollPane scrollableArea = new JScrollPane(scrollAreaPane);
   static Database app = new Database();
-  private static ArrayList<MtgCard> showedCards = new ArrayList<MtgCard>(Arrays.asList(new MtgCard(1), new MtgCard(2),
-      new MtgCard(3), new MtgCard(4), new MtgCard(5), new MtgCard(6), new MtgCard(7), new MtgCard(8)));;
+  private static ArrayList<MtgCard> showedCards = new ArrayList<MtgCard>(Arrays.asList(new MtgCard(18149), new MtgCard(40817),
+      new MtgCard(4730), new MtgCard(23019), new MtgCard(51395), new MtgCard(35710), new MtgCard(330), new MtgCard(9873), new MtgCard(18446), 
+      new MtgCard(45939), new MtgCard(22931), new MtgCard(22934), new MtgCard(22698), new MtgCard(31131), new MtgCard(18724), new MtgCard(21084), 
+      new MtgCard(10658), new MtgCard(35677)));;
 
   public static void headerArea(Container pane) {
     Header header = new Header();
