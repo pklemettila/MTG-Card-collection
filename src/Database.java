@@ -8,7 +8,6 @@ import java.util.*;
 
 public class Database {
 
-
     private Connection connect() {
 
         String url = "jdbc:sqlite:MtgCards.db";
@@ -29,7 +28,6 @@ public class Database {
 
         try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            // set the value
             pstmt.setDouble(1, id);
             ResultSet rs = pstmt.executeQuery();
             price = rs.getDouble("price");
@@ -37,22 +35,6 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return price;
-        }
-    }
-
-    public void getOwnedCards() {
-        String sql = "SELECT id, name FROM cards WHERE own > 0";
-
-        try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-
-            // loop through the result set
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") + "\t" + rs.getString("name"));
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
         }
     }
 
@@ -73,7 +55,7 @@ public class Database {
     }
 
     public String searchCardsById(int id) {
-    String name = "";
+        String name = "";
         String sql = "SELECT name FROM cards WHERE id = ?";
         try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -104,7 +86,6 @@ public class Database {
         }
     }
 
-    
     public void substractFromOwned(int id) {
         String sql = "UPDATE cards SET own = own - 1 " + "WHERE id = ?";
 
@@ -118,7 +99,6 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
-
 
     public void addToOwned(int id) {
         String sql = "UPDATE cards SET own = own + 1 " + "WHERE id = ?";
@@ -233,7 +213,7 @@ public class Database {
             }
             sql += " AND ( " + String.join(" OR ", searchByArrayList) + ")";
         }
-sql += " LIMIT 32";
+        sql += " LIMIT 32";
 
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
