@@ -7,7 +7,7 @@ public class DropdownMenu extends JPanel {
 static final long serialVersionUID = 42L;
 
     private String[] s = {"Select Card Type", "Artifact", "Conspiracy", "Creature", "Enchantment", "Instant", "Land", "Planeswalker", "Sorcery"};
-    private JComboBox dropDown = new JComboBox(s);
+    private JComboBox<String> dropDown = new JComboBox<>(s);
 
 
     public DropdownMenu() {
