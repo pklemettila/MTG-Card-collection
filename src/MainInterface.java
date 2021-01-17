@@ -81,7 +81,7 @@ public class MainInterface {
     searchTextc.gridy = 3;
     searchTextc.gridwidth = 1;
     searchTextc.gridheight = 1;
-    searchTextc.insets = new Insets(0, 70, 0, 0);
+    searchTextc.insets = new Insets(5, 75, -5, 0);
     pane.add(searchText, searchTextc);
 
     JLabel searchRarity = new JLabel("Rarity:");
@@ -91,9 +91,10 @@ public class MainInterface {
     rarityc.gridy = 3;
     rarityc.gridheight = 1;
     rarityc.gridwidth = 1;
-    rarityc.insets = new Insets(0, 120, 0, 0);
+    rarityc.insets = new Insets(5, 125, -5, 0);
     pane.add(searchRarity, rarityc);
 
+    //Dropdown
     GridBagConstraints dropdc = new GridBagConstraints();
     dropdc.fill = GridBagConstraints.HORIZONTAL;
     dropdc.gridwidth = 1;
@@ -103,6 +104,7 @@ public class MainInterface {
     dropdc.insets = new Insets(0, 0, 0, 40);
     pane.add(dropD, dropdc);
 
+    //Search box 
     GridBagConstraints scBoxc = new GridBagConstraints();
     scBoxc.fill = GridBagConstraints.HORIZONTAL;
     scBoxc.gridy = 4;
