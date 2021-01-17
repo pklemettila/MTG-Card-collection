@@ -2,11 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PriceRange extends JPanel {
+
     static final long serialVersionUID = 42L;
     JLabel label;
     JTextField fromField;
     JTextField toField;
-
 
     public PriceRange() {
 
@@ -19,21 +19,24 @@ public class PriceRange extends JPanel {
         this.add(toLabel);
         toField = new JTextField(5);
         this.add(toField);
-
     }
-    //Returns whether or not 'from' has text
+
+    // Returns whether or not 'from' has text
     public boolean fromHasText() {
         if (fromField.getText().isEmpty())
             return false;
-        else return true;
+        else
+            return true;
     }
-    //Returns whether or not 'to' has text
-    public boolean toHasText() {       //Returns whether or not 'to' has text
+
+    // Returns whether or not 'to' has text
+    public boolean toHasText() {
         if (toField.getText().isEmpty())
             return false;
-        else return true;
+        else
+            return true;
     }
-    
+
     public double getFromNumber() {
         try {
             return Double.parseDouble(fromField.getText());
@@ -42,7 +45,6 @@ public class PriceRange extends JPanel {
         }
     }
 
-
     public double getToNumber() {
         try {
             return Double.parseDouble(toField.getText());
@@ -50,5 +52,4 @@ public class PriceRange extends JPanel {
             return 9999;
         }
     }
-
 }

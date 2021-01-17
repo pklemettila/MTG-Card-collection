@@ -25,7 +25,9 @@ public class MainInterface {
           new MtgCard(22931), new MtgCard(22934), new MtgCard(22698), new MtgCard(31131), new MtgCard(18724),
           new MtgCard(21084), new MtgCard(10658), new MtgCard(35677)));;
 
+  // Adds header into its place in gridBag layout
   public static void headerArea(Container pane) {
+
     Header header = new Header();
     GridBagConstraints headerc = new GridBagConstraints();
     headerc.fill = GridBagConstraints.BOTH;
@@ -36,6 +38,7 @@ public class MainInterface {
     pane.add(header, headerc);
   }
 
+  // Adds second and third row into gridBag layout
   public static void secondAndThirdRow(Container pane, JButton searchButton) {
 
     searchTextBox(pane, searchButton);
@@ -165,6 +168,7 @@ public class MainInterface {
     }
   }
 
+//Adds help button
   public static void help(Container pane) {
 
     GridBagConstraints helpc = new GridBagConstraints();
