@@ -38,3 +38,4 @@ public class SearchCheckBoxes extends JPanel {
             return false;
     }
 }
+
