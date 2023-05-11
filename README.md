@@ -1,1 +1,1 @@
-A Java program that provides an interface for managing a collection of Magic the Gathering cards. Done using Java Swing and AWT. Done as project work for a University of Oulu course on user interface programming.
+A Java program that provides an interface for managing a collection of Magic the Gathering cards. Implemented using Java Swing and AWT libraries. Project work for a University of Oulu course on user interface programming.
